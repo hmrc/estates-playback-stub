@@ -27,7 +27,7 @@ import scala.concurrent.{ExecutionContext, Future}
 class StubController @Inject()(headerValidatorAction: HeaderValidatorAction)
                               (implicit ec: ExecutionContext, cc: ControllerComponents) extends StubBaseController {
 
-  def getTrusts(utr: String): Action[AnyContent] = headerValidatorAction.async {
+  def getEstate(utr: String): Action[AnyContent] = headerValidatorAction.async {
     implicit request =>
     if (isUtrValid(utr)) {
       utr match {
