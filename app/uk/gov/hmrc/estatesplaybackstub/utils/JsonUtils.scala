@@ -14,17 +14,18 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.estatesplaybackstub.config
+package uk.gov.hmrc.estatesplaybackstub.utils
 
-import javax.inject.{Inject, Singleton}
-import play.api.Configuration
-import uk.gov.hmrc.play.bootstrap.config.ServicesConfig
+import play.api.libs.json.{JsValue, Json}
 
-@Singleton
-class AppConfig @Inject()(config: Configuration, servicesConfig: ServicesConfig) {
+import scala.io.Source
 
-  val authBaseUrl: String = servicesConfig.baseUrl("auth")
+object JsonUtils {
 
-  val auditingEnabled: Boolean = config.get[Boolean]("auditing.enabled")
-  val graphiteHost: String     = config.get[String]("microservice.metrics.graphite.host")
+   def jsonFromFile(path: String): JsValue = {
+    val resource = Source.fromURL(getClass.getResource(path))
+    val json = Json.parse(resource.mkString)
+    resource.close()
+    json
+  }
 }

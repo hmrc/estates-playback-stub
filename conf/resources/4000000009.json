@@ -1,0 +1,104 @@
+{
+  "responseHeader": {
+    "dfmcaReturnUserStatus": "Processed",
+    "formBundleNo": "000000000001"
+  },
+  "trustOrEstateDisplay": {
+    "applicationType": "02",
+    "matchData": {
+      "utr": "4000000009"
+    },
+    "correspondence": {
+      "abroadIndicator": false,
+      "name": "Estates 03",
+      "address": {
+        "line1": "Address line 1",
+        "line2": "Address line 2",
+        "line3": "Address line 3",
+        "line4": "Town or city",
+        "postCode": "Z99 2YY",
+        "country": "GB"
+      },
+      "phoneNumber": "07598765432"
+    },
+    "yearsReturns": {
+      "returns": [
+        {
+          "taxReturnYear": "16",
+          "taxConsequence": true
+        },
+        {
+          "taxReturnYear": "17",
+          "taxConsequence": true
+        },
+        {
+          "taxReturnYear": "18",
+          "taxConsequence": true
+        }
+      ]
+    },
+    "declaration": {
+      "name": {
+        "firstName": "Alister",
+        "middleName": "Stuart",
+        "lastName": "McGovern"
+      },
+      "address": {
+        "line1": "Address line 1",
+        "line2": "Address line 2",
+        "line3": "Address line 3",
+        "line4": "Town or city",
+        "postCode": "Z99 2YY",
+        "country": "GB"
+      }
+    },
+    "details": {
+      "estate": {
+        "entities": {
+          "personalRepresentative": {
+            "lineNo": "1",
+            "bpMatchStatus": "01",
+            "entityStart": "2017-02-28",
+            "orgName": "1234567890 QwErTyUiOp ,.(/)&'- name",
+            "identification": {
+              "address": {
+                "line1": "Address line 1",
+                "line2": "Address line 2",
+                "line3": "Address line 3",
+                "line4": "Town or city",
+                "country": "DE"
+              }
+            },
+            "phoneNumber": "07888888348"
+          },
+          "deceased": {
+            "lineNo": "1",
+            "bpMatchStatus": "01",
+            "entityStart": "2017-02-28",
+            "name": {
+              "firstName": "Bonnie",
+              "middleName": "Charles",
+              "lastName": "Carter"
+            },
+            "dateOfBirth": "1980-06-01",
+            "dateOfDeath": "2007-03-25",
+            "identification": {
+              "passport": {
+                "number": "KSJDFKSDHF6456545147852369QW26",
+                "expirationDate": "2020-02-02",
+                "countryOfIssue": "FR"
+              },
+              "address": {
+                "line1": "International address line 1",
+                "line2": "International address line 2",
+                "line3": "International address line 3",
+                "country": "ES"
+              }
+            }
+          }
+        },
+        "periodTaxDues": "01"
+      }
+    }
+  }
+}
