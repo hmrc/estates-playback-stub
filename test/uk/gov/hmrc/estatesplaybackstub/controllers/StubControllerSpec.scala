@@ -38,60 +38,95 @@ class StubControllerSpec extends SpecBase {
 
   "StubController getTrusts " should {
 
-    "return 200 with valid response payload for estates " in {
-      val resultJson = getEstateAsValidatedJson("2000000000")
-
-      val validationResult = displayValidator.validateAgainstSchema(resultJson.toString)
-      validationResult mustBe SuccessfulValidation
-
-      (resultJson \ "responseHeader" \ "dfmcaReturnUserStatus").as[String] mustBe "Processed"
-      (resultJson \ "trustOrEstateDisplay" \ "applicationType").as[String] mustBe "02"
-      (resultJson \ "trustOrEstateDisplay" \ "matchData" \ "utr").as[String] mustBe "2000000000"
+    "return OK with valid processed payload for 2000000000" in {
+      testProcessedEstate("2000000000")
     }
 
-    "return 200 with no payload for in processing estates " in {
-      val resultJson = getEstateAsJson("1111111111", OK)
-
-      (resultJson \ "responseHeader" \ "dfmcaReturnUserStatus").as[String] mustBe "In Processing"
-      (resultJson \ "trustOrEstateDisplay").toOption mustNot be(defined)
+    "return OK with valid processed payload for 2000000001" in {
+      testProcessedEstate("2000000001")
     }
 
-    "return 200 with no payload for closed estates" in {
-      val resultJson = getEstateAsJson("1111111112", OK)
-
-      (resultJson \ "responseHeader" \ "dfmcaReturnUserStatus").as[String] mustBe "Closed"
-      (resultJson \ "trustOrEstateDisplay").toOption mustNot be(defined)
+    "return OK with valid processed payload for 2000000002" in {
+      testProcessedEstate("2000000002")
     }
 
-    "return 200 with no payload for estates pending closure" in {
-      val resultJson = getEstateAsJson("1111111113", OK)
-
-      (resultJson \ "responseHeader" \ "dfmcaReturnUserStatus").as[String] mustBe "Pending Closure"
-      (resultJson \ "trustOrEstateDisplay").toOption mustNot be(defined)
+    "return OK with valid processed payload for 2000000003" in {
+      testProcessedEstate("2000000003")
     }
 
-    "return 200 with no payload for estates trusts" in {
-      val resultJson = getEstateAsJson("1111111114", OK)
-
-      (resultJson \ "responseHeader" \ "dfmcaReturnUserStatus").as[String] mustBe "Parked"
-      (resultJson \ "trustOrEstateDisplay").toOption mustNot be(defined)
+    "return OK with valid processed payload for 2000000004" in {
+      testProcessedEstate("2000000004")
     }
 
-    "return 200 with no payload for obsoleted estates" in {
-      val resultJson = getEstateAsJson("1111111115", OK)
-
-      (resultJson \ "responseHeader" \ "dfmcaReturnUserStatus").as[String] mustBe "Obsoleted"
-      (resultJson \ "trustOrEstateDisplay").toOption mustNot be(defined)
+    "return OK with valid processed payload for 4000000000" in {
+      testProcessedEstate("4000000000")
     }
 
-    "return 200 with no payload for suspended estates" in {
-      val resultJson = getEstateAsJson("1111111116", OK)
-
-      (resultJson \ "responseHeader" \ "dfmcaReturnUserStatus").as[String] mustBe "Suspended"
-      (resultJson \ "trustOrEstateDisplay").toOption mustNot be(defined)
+    "return OK with valid processed payload for 4000000001" in {
+      testProcessedEstate("4000000001")
     }
 
-    "return 400 utr code is not valid" in {
+    "return OK with valid processed payload for 4000000002" in {
+      testProcessedEstate("4000000002")
+    }
+
+    "return OK with valid processed payload for 4000000003" in {
+      testProcessedEstate("4000000003")
+    }
+
+    "return OK with valid processed payload for 4000000004" in {
+      testProcessedEstate("4000000004")
+    }
+
+    "return OK with valid processed payload for 4000000005" in {
+      testProcessedEstate("4000000005")
+    }
+
+    "return OK with valid processed payload for 4000000006" in {
+      testProcessedEstate("4000000006")
+    }
+
+    "return OK with valid processed payload for 4000000007" in {
+      testProcessedEstate("4000000007")
+    }
+
+    "return OK with valid processed payload for 4000000008" in {
+      testProcessedEstate("4000000008")
+    }
+
+    "return OK with valid processed payload for 4000000009" in {
+      testProcessedEstate("4000000009")
+    }
+
+    "return OK with valid processed payload for 4000000010" in {
+      testProcessedEstate("4000000010")
+    }
+
+    "return OK with no payload for in processing estates" in {
+      testReturnsOtherStatus("1111111111", "In Processing")
+    }
+
+    "return OK with no payload for closed estates" in {
+      testReturnsOtherStatus("1111111112", "Closed")
+    }
+
+    "return OK with no payload for estates pending closure" in {
+      testReturnsOtherStatus("1111111113", "Pending Closure")
+    }
+
+    "return OK with no payload for estates trusts" in {
+      testReturnsOtherStatus("1111111114", "Parked")
+    }
+
+    "return OK with no payload for obsoleted estates" in {
+      testReturnsOtherStatus("1111111115", "Obsoleted")
+    }
+
+    "return OK with no payload for suspended estates" in {
+      testReturnsOtherStatus("1111111116", "Suspended")
+    }
+
+    "return Bad Request when utr code is not valid" in {
       val resultJson = getEstateAsJson("12345678", BAD_REQUEST)
 
       (resultJson \ "code").as[String] mustBe "INVALID_UTR"
@@ -103,7 +138,7 @@ class StubControllerSpec extends SpecBase {
       (resultJson \ "code").as[String] mustBe "RESOURCE_NOT_FOUND"
     }
 
-    "return 500 Internal server error when des having internal errors" in {
+    "return Internal Server Error when des having internal errors" in {
       val resultJson = getEstateAsJson("0000000500", INTERNAL_SERVER_ERROR)
 
       (resultJson \ "code").as[String] mustBe "SERVER_ERROR"
@@ -134,5 +169,20 @@ class StubControllerSpec extends SpecBase {
     validationResult mustBe SuccessfulValidation
 
     resultJson
+  }
+
+  private def testProcessedEstate(utr: String) = {
+    val resultJson = getEstateAsValidatedJson(utr)
+
+    (resultJson \ "responseHeader" \ "dfmcaReturnUserStatus").as[String] mustBe "Processed"
+    (resultJson \ "trustOrEstateDisplay" \ "applicationType").as[String] mustBe "02"
+    (resultJson \ "trustOrEstateDisplay" \ "matchData" \ "utr").as[String] mustBe utr
+  }
+
+  private def testReturnsOtherStatus(utr: String, status: String) = {
+    val resultJson = getEstateAsJson(utr, OK)
+
+    (resultJson \ "responseHeader" \ "dfmcaReturnUserStatus").as[String] mustBe status
+    (resultJson \ "trustOrEstateDisplay").toOption mustNot be(defined)
   }
 }
