@@ -27,32 +27,39 @@ import scala.concurrent.{ExecutionContext, Future}
 class StubController @Inject()(headerValidatorAction: HeaderValidatorAction)
                               (implicit ec: ExecutionContext, cc: ControllerComponents) extends StubBaseController {
 
+  //noinspection ScalaStyle
   def getEstate(utr: String): Action[AnyContent] = headerValidatorAction.async {
     implicit request =>
     if (isUtrValid(utr)) {
       utr match {
-
-        //estates
-        case "2000000000" | "2000000001" | "2000000002" | "2000000003" | "2000000004" =>
-          jsonResult(utr, Ok)
-
-        case "4000000000" | "4000000001" | "4000000002" | "4000000003" | "4000000004" | "4000000005" | "4000000006" | "4000000007"
-             | "4000000008" | "4000000009" | "4000000010" =>
-          jsonResult(utr, Ok)
-
-        // In Processing, Closed, Pending Closure, Parked, Obsoleted and Suspended
-        case "1111111111" | "1111111112" | "1111111113" | "1111111114" | "1111111115" | "1111111116" =>
-          jsonResult(utr, Ok)
-
-        case "0000000500" =>
-          Future.successful(InternalServerError(jsonResponse500))
-        case "0000000503" =>
-          Future.successful(ServiceUnavailable(jsonResponse503))
+        case "2000000000" => jsonResult(utr, Ok)
+        case "2000000001" => jsonResult(utr, Ok)
+        case "2000000002" => jsonResult(utr, Ok)
+        case "2000000003" => jsonResult(utr, Ok)
+        case "2000000004" => jsonResult(utr, Ok)
+        case "4000000000" => jsonResult(utr, Ok)
+        case "4000000001" => jsonResult(utr, Ok)
+        case "4000000002" => jsonResult(utr, Ok)
+        case "4000000003" => jsonResult(utr, Ok)
+        case "4000000004" => jsonResult(utr, Ok)
+        case "4000000005" => jsonResult(utr, Ok)
+        case "4000000006" => jsonResult(utr, Ok)
+        case "4000000007" => jsonResult(utr, Ok)
+        case "4000000008" => jsonResult(utr, Ok)
+        case "4000000009" => jsonResult(utr, Ok)
+        case "4000000010" => jsonResult(utr, Ok)
+        case "1111111111" => jsonResult(utr, Ok)  // In Processing
+        case "1111111112" => jsonResult(utr, Ok)  // Closed
+        case "1111111113" => jsonResult(utr, Ok)  // Pending Closure
+        case "1111111114" => jsonResult(utr, Ok)  // Parked
+        case "1111111115" => jsonResult(utr, Ok)  // Obsoleted
+        case "1111111116" => jsonResult(utr, Ok)  // Suspended
+        case "0000000500" => Future.successful(InternalServerError(jsonResponse500))
+        case "0000000503" => Future.successful(ServiceUnavailable(jsonResponse503))
         case _ => Future.successful(NotFound(jsonResponseResourceNotFound))
       }
     } else {
       Future.successful(BadRequest(jsonResponseInvalidUtr))
     }
   }
-
 }

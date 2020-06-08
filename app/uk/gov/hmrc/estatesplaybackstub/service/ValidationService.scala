@@ -51,25 +51,19 @@ class Validator(schema: JsonSchema) {
   def validateAgainstSchema(input: String): ValidationResult = {
 
     try {
-      val jsonToValidate: Try[JsonNode] = doNotAllowDuplicatedProperties(input)
+      val json: JsonNode = doNotAllowDuplicatedProperties(input)
 
-      jsonToValidate match {
-        case Success(json) =>
-          val validationOutput: ProcessingReport = schema.validate(json, true)
+      val validationOutput: ProcessingReport = schema.validate(json, true)
 
-          if (validationOutput.isSuccess) {
-            SuccessfulValidation
-          } else {
-            val validationErrors = getValidationErrors(validationOutput)
-            val failedValidation = FailedValidation("Invalid Json", 0, validationErrors)
-            Logger.info(validationErrors.mkString)
-            Logger.info("Failed schema validation")
-            Logger.debug(failedValidation.toString)
-            failedValidation
-          }
-
-        case _=>Logger.error(s"[Failure]Error validating Json request against Schema")
-          FailedValidation("Not JSON", 0, Nil)
+      if (validationOutput.isSuccess) {
+        SuccessfulValidation
+      } else {
+        val validationErrors = getValidationErrors(validationOutput)
+        val failedValidation = FailedValidation("Invalid Json", 0, validationErrors)
+        Logger.info(validationErrors.mkString)
+        Logger.info("Failed schema validation")
+        Logger.debug(failedValidation.toString)
+        failedValidation
       }
     }
     catch {
@@ -91,7 +85,7 @@ class Validator(schema: JsonSchema) {
     })
   }
 
-  private def doNotAllowDuplicatedProperties(jsonNodeAsString: String): Try[JsonNode] = {
+  private def doNotAllowDuplicatedProperties(jsonNodeAsString: String): JsonNode = {
     val objectMapper: ObjectMapper = new ObjectMapper()
     objectMapper.enable(JsonParser.Feature.STRICT_DUPLICATE_DETECTION)
 
@@ -100,6 +94,6 @@ class Validator(schema: JsonSchema) {
 
     objectMapper.readTree(jsonParser)
 
-    Try(JsonLoader.fromString(jsonNodeAsString))
+    JsonLoader.fromString(jsonNodeAsString)
   }
 }

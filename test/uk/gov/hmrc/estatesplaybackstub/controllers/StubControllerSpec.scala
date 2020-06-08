@@ -17,7 +17,8 @@
 package uk.gov.hmrc.estatesplaybackstub.controllers
 
 import play.api.libs.json.{JsObject, JsValue, Json}
-import play.api.mvc.{ControllerComponents, Result}
+import play.api.mvc.{AnyContentAsEmpty, ControllerComponents, Result}
+import play.api.test.FakeRequest
 import play.api.test.Helpers._
 import uk.gov.hmrc.estatesplaybackstub.controllers.actions.HeaderValidatorAction
 import uk.gov.hmrc.estatesplaybackstub.models.SuccessfulValidation
@@ -41,6 +42,43 @@ class StubControllerSpec extends SpecBase {
     "return OK with valid processed payload for 2000000000" in {
       testProcessedEstate("2000000000")
     }
+
+    "return FORBIDDEN with no headers" in {
+      val utr = "2000000000"
+      val request = FakeRequest("GET", s"/trusts/registration/$utr")
+
+      val result = SUT.getEstate(utr).apply(request)
+      status(result) must be(FORBIDDEN)
+    }
+
+    "return FORBIDDEN with only a Token header" in {
+      val utr = "2000000000"
+      val request = FakeRequest("GET", s"/trusts/registration/$utr")
+              .withHeaders((TOKEN_HEADER, "Bearer 11"))
+
+      val result = SUT.getEstate(utr).apply(request)
+      status(result) must be(FORBIDDEN)
+    }
+
+    "return UNAUTHORIZED with no Token header" in {
+      val utr = "2000000000"
+      val request = FakeRequest("GET", s"/trusts/registration/$utr")
+        .withHeaders((ENVIRONMENT_HEADER, "dev"))
+
+      val result = SUT.getEstate(utr).apply(request)
+      status(result) must be(UNAUTHORIZED)
+    }
+
+    "return FORBIDDEN with no correlation ID" in {
+      val utr = "2000000000"
+      val request = FakeRequest("GET", s"/trusts/registration/$utr")
+              .withHeaders((ENVIRONMENT_HEADER, "dev"),
+              (TOKEN_HEADER, "Bearer 11"))
+
+      val result = SUT.getEstate(utr).apply(request)
+      status(result) must be(FORBIDDEN)
+    }
+
 
     "return OK with valid processed payload for 2000000001" in {
       testProcessedEstate("2000000001")
