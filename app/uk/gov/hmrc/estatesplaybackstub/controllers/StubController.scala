@@ -55,6 +55,7 @@ class StubController @Inject()(headerValidatorAction: HeaderValidatorAction)
         case "1111111114" => jsonResult(utr, Ok)  // Parked
         case "1111111115" => jsonResult(utr, Ok)  // Obsoleted
         case "1111111116" => jsonResult(utr, Ok)  // Suspended
+        case "5000000000" => jsonResult(utr, Ok)  // Suspended
         case "0000000500" => Future.successful(InternalServerError(jsonResponse500))
         case "0000000503" => Future.successful(ServiceUnavailable(jsonResponse503))
         case _ => Future.successful(NotFound(jsonResponseResourceNotFound))
