@@ -140,6 +140,10 @@ class StubControllerSpec extends SpecBase {
       testProcessedEstate("4000000010")
     }
 
+    "return OK with valid processed payload for 5000000000" in {
+      testProcessedEstate("5000000000")
+    }
+
     "return OK with no payload for in processing estates" in {
       testReturnsOtherStatus("1111111111", "In Processing")
     }
