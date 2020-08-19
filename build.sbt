@@ -9,8 +9,6 @@ lazy val microservice = Project(appName, file("."))
   .enablePlugins(play.sbt.PlayScala, SbtAutoBuildPlugin, SbtGitVersioning, SbtDistributablesPlugin, SbtArtifactory)
   .disablePlugins(JUnitXmlReportPlugin) //Required to prevent https://github.com/scalatest/scalatest/issues/1427
   .settings(
-    majorVersion                     := 0,
-    libraryDependencies              ++= AppDependencies.compile ++ AppDependencies.test,
     PlayKeys.playDefaultPort := 8833,
     ScoverageKeys.coverageExcludedFiles := "<empty>;.*config.*;Reverse.*;.*filters.*;.*handlers.*;.*components.*;.*repositories.*;" +
       ".*BuildInfo.*;.*Routes.*;.*GuiceInjector;" +
@@ -18,6 +16,11 @@ lazy val microservice = Project(appName, file("."))
     ScoverageKeys.coverageMinimum := 99,        // all new JSON files must be unit tested
     ScoverageKeys.coverageFailOnMinimum := true,
     ScoverageKeys.coverageHighlighting := true
+  )
+  .settings(
+      majorVersion                     := 0,
+      libraryDependencies              ++= AppDependencies.compile ++ AppDependencies.test,
+      dependencyOverrides              ++= AppDependencies.overrides
   )
   .settings(publishingSettings: _*)
   .configs(IntegrationTest)
