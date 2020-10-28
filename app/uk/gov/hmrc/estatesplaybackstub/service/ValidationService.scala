@@ -26,7 +26,6 @@ import uk.gov.hmrc.estatesplaybackstub.models.{DesValidationError, FailedValidat
 
 import scala.collection.JavaConverters._
 import scala.io.Source
-import scala.util.{Success, Try}
 
 class ValidationService () {
 
@@ -44,6 +43,9 @@ class ValidationService () {
 }
 
 class Validator(schema: JsonSchema) {
+
+  private val logger: Logger = Logger(getClass)
+
   private val jsonErrorMessageTag = "message"
   private val jsonErrorInstanceTag = "instance"
   private val jsonErrorPointerTag = "pointer"
@@ -60,15 +62,15 @@ class Validator(schema: JsonSchema) {
       } else {
         val validationErrors = getValidationErrors(validationOutput)
         val failedValidation = FailedValidation("Invalid Json", 0, validationErrors)
-        Logger.info(validationErrors.mkString)
-        Logger.info("Failed schema validation")
-        Logger.debug(failedValidation.toString)
+        logger.info(s"[validateAgainstSchema] validation errors: ${validationErrors.mkString}")
+        logger.info("[validateAgainstSchema] Failed schema validation")
+        logger.debug(failedValidation.toString)
         failedValidation
       }
     }
     catch {
       case ex: Exception =>
-        Logger.error(s"Error validating Json request against Schema: ${ex.getMessage}")
+        logger.error(s"[validateAgainstSchema] Error validating Json request against Schema: ${ex.getMessage}")
         FailedValidation("Not JSON", 0, Nil)
     }
   }
@@ -80,7 +82,7 @@ class Validator(schema: JsonSchema) {
       val message = error.findValue(jsonErrorMessageTag).asText("")
       val location = error.findValue(jsonErrorInstanceTag).at(s"/$jsonErrorPointerTag").asText()
       val locations = error.findValues(jsonErrorInstanceTag)
-      Logger.error(s"[getValidationErrors] Failed at locations : $locations")
+      logger.error(s"[getValidationErrors] Failed at locations : $locations")
       DesValidationError(message, if (location == "") "/" else location)
     })
   }

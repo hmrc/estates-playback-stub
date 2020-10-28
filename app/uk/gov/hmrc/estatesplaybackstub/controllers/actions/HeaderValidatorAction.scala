@@ -20,6 +20,9 @@ import javax.inject.Inject
 import play.api.Logger
 import play.api.mvc.{ActionBuilder, AnyContent, BodyParsers, Request, Result, Results}
 import uk.gov.hmrc.estatesplaybackstub.controllers.HeaderValidator
+import uk.gov.hmrc.estatesplaybackstub.utils.Session
+import uk.gov.hmrc.http.HeaderCarrier
+import uk.gov.hmrc.play.HeaderCarrierConverter
 
 import scala.concurrent.{ExecutionContext, Future}
 
@@ -28,9 +31,14 @@ class HeaderValidatorAction @Inject()(
                                        override val executionContext: ExecutionContext)
   extends ActionBuilder[Request, AnyContent] with HeaderValidator {
 
+  private val logger: Logger = Logger(getClass)
+  
   def invokeBlock[A](request: Request[A], block: (Request[A]) => Future[Result]): Future[Result] = {
+
+    val hc: HeaderCarrier = HeaderCarrierConverter.fromHeadersAndSession(request.headers, Some(request.session))
+
     val (envValid, tokeValid) = (isEnvironmentValid(request), isTokenValid(request))
-    Logger.info(s"envValid , tokeValid Valid: ${(envValid, tokeValid)}")
+    logger.info(s"[Session ID: ${Session.id(hc)}] isEnvironmentValid: $envValid, isTokenValid: $tokeValid")
     (envValid, tokeValid) match {
       case (false, false) => Future.successful(Results.Forbidden)
       case (false, true) => Future.successful(Results.Forbidden)
@@ -39,7 +47,7 @@ class HeaderValidatorAction @Inject()(
         if (isCorrelationIdValid(request)) {
           block(request)
         } else {
-          Logger.info(s"Correlation-Id is missing or invalid")
+          logger.info(s"[Session ID: ${Session.id(hc)}] Correlation-Id is missing or invalid")
           Future.successful(Results.Forbidden)
         }
     }
