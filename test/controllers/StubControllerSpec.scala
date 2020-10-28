@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.estatesplaybackstub.controllers
+package controllers
 
 import play.api.libs.json.{JsObject, JsValue, Json}
 import play.api.mvc.{AnyContentAsEmpty, ControllerComponents, Result}
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
-import uk.gov.hmrc.estatesplaybackstub.controllers.actions.HeaderValidatorAction
-import uk.gov.hmrc.estatesplaybackstub.models.SuccessfulValidation
-import uk.gov.hmrc.estatesplaybackstub.service.{ValidationService, Validator}
+import controllers.actions.HeaderValidatorAction
+import models.SuccessfulValidation
+import service.{ValidationService, Validator}
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future

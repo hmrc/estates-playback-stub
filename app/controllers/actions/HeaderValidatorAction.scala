@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.estatesplaybackstub.controllers.actions
+package controllers.actions
 
 import javax.inject.Inject
 import play.api.Logger
 import play.api.mvc.{ActionBuilder, AnyContent, BodyParsers, Request, Result, Results}
-import uk.gov.hmrc.estatesplaybackstub.controllers.HeaderValidator
-import uk.gov.hmrc.estatesplaybackstub.utils.Session
+import controllers.HeaderValidator
+import utils.Session
 import uk.gov.hmrc.http.HeaderCarrier
 import uk.gov.hmrc.play.HeaderCarrierConverter
 

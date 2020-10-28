@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.estatesplaybackstub.service
+package service
 
-import uk.gov.hmrc.estatesplaybackstub.controllers.SpecBase
-import uk.gov.hmrc.estatesplaybackstub.models.{FailedValidation, SuccessfulValidation}
-import uk.gov.hmrc.estatesplaybackstub.utils.JsonUtils
+import controllers.SpecBase
+import models.{FailedValidation, SuccessfulValidation}
+import utils.JsonUtils
 
 class ValidationServiceSpec extends SpecBase {
 

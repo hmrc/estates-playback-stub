@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.estatesplaybackstub.controllers
+package controllers
 
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, ControllerComponents}
-import uk.gov.hmrc.estatesplaybackstub.controllers.actions.HeaderValidatorAction
-import uk.gov.hmrc.estatesplaybackstub.utils.DesResponse._
+import controllers.actions.HeaderValidatorAction
+import utils.DesResponse._
 
 import scala.concurrent.{ExecutionContext, Future}
 
