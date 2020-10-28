@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.estatesplaybackstub.utils
+package utils
 
 import play.api.libs.json.{JsValue, Json}
 

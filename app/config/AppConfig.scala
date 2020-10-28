@@ -14,12 +14,17 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.estatesplaybackstub.utils
+package config
 
-import uk.gov.hmrc.http.HeaderCarrier
+import javax.inject.{Inject, Singleton}
+import play.api.Configuration
+import uk.gov.hmrc.play.bootstrap.config.ServicesConfig
 
-object Session {
+@Singleton
+class AppConfig @Inject()(config: Configuration, servicesConfig: ServicesConfig) {
 
-  def id(hc: HeaderCarrier): String = hc.sessionId.map(_.value).getOrElse("No Session ID available")
+  val authBaseUrl: String = servicesConfig.baseUrl("auth")
 
+  val auditingEnabled: Boolean = config.get[Boolean]("auditing.enabled")
+  val graphiteHost: String     = config.get[String]("microservice.metrics.graphite.host")
 }

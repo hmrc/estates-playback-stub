@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.estatesplaybackstub.service
+package service
 import com.fasterxml.jackson.core.{JsonFactory, JsonParser}
 import com.fasterxml.jackson.databind.{JsonNode, ObjectMapper}
 import com.github.fge.jackson.JsonLoader
@@ -22,7 +22,7 @@ import com.github.fge.jsonschema.core.report.LogLevel.ERROR
 import com.github.fge.jsonschema.core.report.ProcessingReport
 import com.github.fge.jsonschema.main.{JsonSchema, JsonSchemaFactory}
 import play.api.Logger
-import uk.gov.hmrc.estatesplaybackstub.models.{DesValidationError, FailedValidation, SuccessfulValidation, ValidationResult}
+import models.{DesValidationError, FailedValidation, SuccessfulValidation, ValidationResult}
 
 import scala.collection.JavaConverters._
 import scala.io.Source

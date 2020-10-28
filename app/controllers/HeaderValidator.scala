@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.estatesplaybackstub.controllers
+package controllers
 
 import play.api.mvc.Request
 
