@@ -18,9 +18,11 @@ lazy val microservice = Project(appName, file("."))
     ScoverageKeys.coverageHighlighting := true
   )
   .settings(
-      majorVersion                     := 0,
-      libraryDependencies              ++= AppDependencies.compile ++ AppDependencies.test,
-      dependencyOverrides              ++= AppDependencies.overrides
+    scalaVersion := "2.12.12",
+    SilencerSettings(),
+    majorVersion                     := 0,
+    libraryDependencies              ++= AppDependencies.compile ++ AppDependencies.test,
+    dependencyOverrides              ++= AppDependencies.overrides
   )
   .settings(publishingSettings: _*)
   .configs(IntegrationTest)
