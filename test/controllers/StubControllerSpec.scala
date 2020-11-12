@@ -16,16 +16,13 @@
 
 package controllers
 
-import play.api.libs.json.{JsObject, JsValue, Json}
-import play.api.mvc.{AnyContentAsEmpty, ControllerComponents, Result}
-import play.api.test.FakeRequest
-import play.api.test.Helpers._
 import controllers.actions.HeaderValidatorAction
 import models.SuccessfulValidation
-import service.{ValidationService, Validator}
-
-import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.Future
+import play.api.libs.json.JsValue
+import play.api.mvc.ControllerComponents
+import play.api.test.FakeRequest
+import play.api.test.Helpers._
+import service.ValidationService
 
 class StubControllerSpec extends SpecBase {
 

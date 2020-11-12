@@ -16,16 +16,16 @@
 
 package controllers
 
+import controllers.actions.HeaderValidatorAction
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, ControllerComponents}
-import controllers.actions.HeaderValidatorAction
 import utils.DesResponse._
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.Future
 
 @Singleton()
 class StubController @Inject()(headerValidatorAction: HeaderValidatorAction)
-                              (implicit ec: ExecutionContext, cc: ControllerComponents) extends StubBaseController {
+                              (implicit cc: ControllerComponents) extends StubBaseController {
 
   //noinspection ScalaStyle
   def getEstate(utr: String): Action[AnyContent] = headerValidatorAction.async {
