@@ -17,7 +17,7 @@
 package controllers.actions
 
 import javax.inject.Inject
-import play.api.Logger
+import play.api.Logging
 import play.api.mvc.{ActionBuilder, AnyContent, BodyParsers, Request, Result, Results}
 import controllers.HeaderValidator
 import utils.Session
@@ -29,10 +29,8 @@ import scala.concurrent.{ExecutionContext, Future}
 class HeaderValidatorAction @Inject()(
                                        override val parser: BodyParsers.Default,
                                        override val executionContext: ExecutionContext)
-  extends ActionBuilder[Request, AnyContent] with HeaderValidator {
+  extends ActionBuilder[Request, AnyContent] with HeaderValidator with Logging {
 
-  private val logger: Logger = Logger(getClass)
-  
   def invokeBlock[A](request: Request[A], block: (Request[A]) => Future[Result]): Future[Result] = {
 
     val hc: HeaderCarrier = HeaderCarrierConverter.fromHeadersAndSession(request.headers, Some(request.session))
