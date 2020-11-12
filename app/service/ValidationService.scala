@@ -21,7 +21,7 @@ import com.github.fge.jackson.JsonLoader
 import com.github.fge.jsonschema.core.report.LogLevel.ERROR
 import com.github.fge.jsonschema.core.report.ProcessingReport
 import com.github.fge.jsonschema.main.{JsonSchema, JsonSchemaFactory}
-import play.api.Logger
+import play.api.Logging
 import models.{DesValidationError, FailedValidation, SuccessfulValidation, ValidationResult}
 
 import scala.collection.JavaConverters._
@@ -42,9 +42,7 @@ class ValidationService () {
 
 }
 
-class Validator(schema: JsonSchema) {
-
-  private val logger: Logger = Logger(getClass)
+class Validator(schema: JsonSchema) extends Logging {
 
   private val jsonErrorMessageTag = "message"
   private val jsonErrorInstanceTag = "instance"
