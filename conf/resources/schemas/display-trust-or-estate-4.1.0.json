@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Display Trust or Estate - Response",
-  "description": "Comment describing your JSON Schema",
+  "description": "API#1488 Response schema 4.1.0",
   "type": "object",
   "properties": {
     "trustOrEstateDisplay": {
@@ -17,16 +17,17 @@
         },
         "matchData": {
           "type": "object",
+          "description": "Possible options - UTR to be returned for Taxable , URN for Non- Taxable , UTR and URN if Trust has converted from Non-taxable to Taxable",
           "properties": {
             "utr": {
               "$ref": "#/definitions/utrString"
+            },"urn": {
+              "$ref": "#/definitions/urnString"
             }
           },
-          "required": [
-            "utr"
-          ],
           "additionalProperties": false
         },
+
         "correspondence": {
           "type": "object",
           "properties": {
@@ -41,6 +42,12 @@
             },
             "phoneNumber": {
               "$ref": "#/definitions/phoneString"
+            },
+            "welsh": {
+              "$ref": "#/definitions/checkElement"
+            },
+            "braille": {
+              "$ref": "#/definitions/checkElement"
             }
           },
           "required": [
@@ -78,6 +85,9 @@
               "$ref": "#/definitions/estateType"
             }
           ]
+        },
+        "submissionDate": {
+          "$ref": "#/definitions/dateString"
         }
       },
       "required": [
@@ -86,7 +96,8 @@
         "correspondence",
         "declaration",
         "details"
-      ]
+      ],
+      "additionalProperties": false
     },
     "responseHeader": {
       "type": "object",
@@ -111,12 +122,14 @@
       "required": [
         "dfmcaReturnUserStatus",
         "formBundleNo"
-      ]
+      ],
+      "additionalProperties": false
     }
   },
   "required": [
     "responseHeader"
   ],
+  "additionalProperties": false,
   "definitions": {
     "trustType": {
       "type": "object",
@@ -136,8 +149,7 @@
           },
           "required": [
             "details",
-            "entities",
-            "assets"
+            "entities"
           ],
           "additionalProperties": false
         }
@@ -211,6 +223,15 @@
                     },
                     "entityStart": {
                       "$ref": "#/definitions/dateString"
+                    },
+                    "countryOfResidence": {
+                      "$ref": "#/definitions/countryType"
+                    },
+                    "nationality": {
+                      "$ref": "#/definitions/countryType"
+                    },
+                    "legallyIncapable": {
+                      "$ref": "#/definitions/checkElement"
                     }
                   },
                   "required": [
@@ -244,6 +265,9 @@
                     },
                     "entityStart": {
                       "$ref": "#/definitions/dateString"
+                    },
+                    "countryOfResidence": {
+                      "$ref": "#/definitions/countryType"
                     }
                   },
                   "required": [
@@ -285,6 +309,15 @@
                   },
                   "entityStart": {
                     "$ref": "#/definitions/dateString"
+                  },
+                  "countryOfResidence": {
+                    "$ref": "#/definitions/countryType"
+                  },
+                  "nationality": {
+                    "$ref": "#/definitions/countryType"
+                  },
+                  "legallyIncapable": {
+                    "$ref": "#/definitions/checkElement"
                   }
                 },
                 "required": [
@@ -326,6 +359,9 @@
                   },
                   "entityStart": {
                     "$ref": "#/definitions/dateString"
+                  },
+                  "countryOfResidence": {
+                    "$ref": "#/definitions/countryType"
                   }
                 },
                 "required": [
@@ -405,6 +441,14 @@
           "items": {
             "$ref": "#/definitions/otherAssetType"
           }
+        },
+        "nonEEABusiness": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 25,
+          "items": {
+            "$ref": "#/definitions/nonEEABusinessType"
+          }
         }
       },
       "additionalProperties": false
@@ -414,7 +458,7 @@
       "properties": {
         "description": {
           "type": "string",
-          "pattern": "^[0-9a-zA-Z{\u00C0-\u02FF\u2019}\\- \\u005C&`'^]{1,56}$"
+          "pattern": "^[0-9a-zA-Z{À-˿’}\\- \\u005C&`'^]{1,56}$"
         },
         "value": {
           "$ref": "#/definitions/monetaryType"
@@ -430,6 +474,24 @@
       "properties": {
         "startDate": {
           "$ref": "#/definitions/dateString"
+        },
+        "trustTaxable": {
+          "$ref": "#/definitions/checkElement"
+        },
+        "expressTrust": {
+          "$ref": "#/definitions/checkElement"
+        },
+        "trustUKResident": {
+          "$ref": "#/definitions/checkElement"
+        },
+        "trustUKProperty": {
+          "$ref": "#/definitions/checkElement"
+        },
+        "trustRecorded": {
+          "$ref": "#/definitions/checkElement"
+        },
+        "trustUKRelation": {
+          "$ref": "#/definitions/checkElement"
         },
         "lawCountry": {
           "$ref": "#/definitions/nonUKCountryType"
@@ -529,7 +591,7 @@
       },
       "required": [
         "startDate",
-        "typeOfTrust"
+        "trustUKResident"
       ],
       "additionalProperties": false
     },
@@ -688,6 +750,15 @@
         },
         "entityStart": {
           "$ref": "#/definitions/dateString"
+        },
+        "countryOfResidence": {
+          "$ref": "#/definitions/countryType"
+        },
+        "nationality": {
+          "$ref": "#/definitions/countryType"
+        },
+        "legallyIncapable": {
+          "$ref": "#/definitions/checkElement"
         }
       },
       "required": [
@@ -896,12 +967,20 @@
         },
         "entityStart": {
           "$ref": "#/definitions/dateString"
+        },
+        "countryOfResidence": {
+          "$ref": "#/definitions/countryType"
+        },
+        "nationality": {
+          "$ref": "#/definitions/countryType"
+        },
+        "legallyIncapable": {
+          "$ref": "#/definitions/checkElement"
         }
       },
       "required": [
         "lineNo",
         "name",
-        "vulnerableBeneficiary",
         "entityStart"
       ],
       "additionalProperties": false
@@ -929,6 +1008,9 @@
         },
         "entityStart": {
           "$ref": "#/definitions/dateString"
+        },
+        "countryOfResidence": {
+          "$ref": "#/definitions/countryType"
         }
       },
       "required": [
@@ -961,6 +1043,9 @@
         },
         "entityStart": {
           "$ref": "#/definitions/dateString"
+        },
+        "countryOfResidence": {
+          "$ref": "#/definitions/countryType"
         }
       },
       "required": [
@@ -981,7 +1066,7 @@
         },
         "description": {
           "type": "string",
-          "pattern": "^[0-9a-zA-Z{\u00C0-\u02FF\u2019}\\- \\u005C&`'^]{1,56}$"
+          "pattern": "^[0-9a-zA-Z{À-˿’}\\- \\u005C&`'^]{1,56}$"
         },
         "beneficiaryDiscretion": {
           "type": "boolean"
@@ -1014,23 +1099,23 @@
         },
         "description": {
           "type": "string",
-          "pattern": "^[0-9a-zA-Z{\u00C0-\u02FF\u2019}\\- \\u005C&`'^]{1,70}$"
+          "pattern": "^[0-9a-zA-Z{À-˿’}\\- \\u005C&`'^]{1,70}$"
         },
         "description1": {
           "type": "string",
-          "pattern": "^[0-9a-zA-Z{\u00C0-\u02FF\u2019}\\- \\u005C&`'^]{1,70}$"
+          "pattern": "^[0-9a-zA-Z{À-˿’}\\- \\u005C&`'^]{1,70}$"
         },
         "description2": {
           "type": "string",
-          "pattern": "^[0-9a-zA-Z{\u00C0-\u02FF\u2019}\\- \\u005C&`'^]{1,70}$"
+          "pattern": "^[0-9a-zA-Z{À-˿’}\\- \\u005C&`'^]{1,70}$"
         },
         "description3": {
           "type": "string",
-          "pattern": "^[0-9a-zA-Z{\u00C0-\u02FF\u2019}\\- \\u005C&`'^]{1,70}$"
+          "pattern": "^[0-9a-zA-Z{À-˿’}\\- \\u005C&`'^]{1,70}$"
         },
         "description4": {
           "type": "string",
-          "pattern": "^[0-9a-zA-Z{\u00C0-\u02FF\u2019}\\- \\u005C&`'^]{1,70}$"
+          "pattern": "^[0-9a-zA-Z{À-˿’}\\- \\u005C&`'^]{1,70}$"
         },
         "numberOfBeneficiary": {
           "type": "string",
@@ -1047,6 +1132,9 @@
         },
         "entityStart": {
           "$ref": "#/definitions/dateString"
+        },
+        "countryOfResidence": {
+          "$ref": "#/definitions/countryType"
         }
       },
       "required": [
@@ -1069,7 +1157,7 @@
         },
         "description": {
           "type": "string",
-          "pattern": "^[0-9a-zA-Z{\u00C0-\u02FF\u2019}\\- \\u005C&`'^]{1,70}$"
+          "pattern": "^[0-9a-zA-Z{À-˿’}\\- \\u005C&`'^]{1,70}$"
         },
         "address": {
           "$ref": "#/definitions/addressType"
@@ -1082,6 +1170,9 @@
         },
         "entityStart": {
           "$ref": "#/definitions/dateString"
+        },
+        "countryOfResidence": {
+          "$ref": "#/definitions/countryType"
         }
       },
       "required": [
@@ -1114,6 +1205,9 @@
         },
         "entityStart": {
           "$ref": "#/definitions/dateString"
+        },
+        "countryOfResidence": {
+          "$ref": "#/definitions/countryType"
         }
       },
       "required": [
@@ -1146,6 +1240,12 @@
         },
         "entityStart": {
           "$ref": "#/definitions/dateString"
+        },
+        "countryOfResidence": {
+          "$ref": "#/definitions/countryType"
+        },
+        "nationality": {
+          "$ref": "#/definitions/countryType"
         }
       },
       "required": [
@@ -1212,6 +1312,9 @@
         },
         "entityStart": {
           "$ref": "#/definitions/dateString"
+        },
+        "countryOfResidence": {
+          "$ref": "#/definitions/countryType"
         }
       },
       "required": [
@@ -1258,6 +1361,15 @@
         },
         "entityStart": {
           "$ref": "#/definitions/dateString"
+        },
+        "countryOfResidence": {
+          "$ref": "#/definitions/countryType"
+        },
+        "nationality": {
+          "$ref": "#/definitions/countryType"
+        },
+        "legallyIncapable": {
+          "$ref": "#/definitions/checkElement"
         }
       },
       "required": [
@@ -1291,6 +1403,9 @@
         },
         "entityStart": {
           "$ref": "#/definitions/dateString"
+        },
+        "countryOfResidence": {
+          "$ref": "#/definitions/countryType"
         }
       },
       "required": [
@@ -1392,6 +1507,15 @@
         },
         "entityStart": {
           "$ref": "#/definitions/dateString"
+        },
+        "countryOfResidence": {
+          "$ref": "#/definitions/countryType"
+        },
+        "nationality": {
+          "$ref": "#/definitions/countryType"
+        },
+        "legallyIncapable": {
+          "$ref": "#/definitions/checkElement"
         }
       },
       "required": [
@@ -1460,7 +1584,7 @@
         },
         "businessDescription": {
           "type": "string",
-          "pattern": "^[0-9a-zA-Z{\u00C0-\u02FF\u2019}\\- \\u005C&`'^]{1,56}$"
+          "pattern": "^[0-9a-zA-Z{À-˿’}\\- \\u005C&`'^]{1,56}$"
         },
         "address": {
           "$ref": "#/definitions/addressType"
@@ -1483,7 +1607,7 @@
         },
         "description": {
           "type": "string",
-          "pattern": "^[0-9a-zA-Z{\u00C0-\u02FF\u2019}\\- \\u005C&`'^]{1,56}$"
+          "pattern": "^[0-9a-zA-Z{À-˿’}\\- \\u005C&`'^]{1,56}$"
         },
         "partnershipStart": {
           "$ref": "#/definitions/dateString"
@@ -1491,6 +1615,37 @@
       },
       "required": [
         "description"
+      ],
+      "additionalProperties": false
+    },
+    "nonEEABusinessType": {
+      "type": "object",
+      "properties": {
+        "lineNo": {
+          "$ref": "#/definitions/lineNoType"
+        },
+        "orgName": {
+          "$ref": "#/definitions/orgNameString"
+        },
+        "address": {
+          "$ref": "#/definitions/addressType"
+        },
+        "govLawCountry": {
+          "$ref": "#/definitions/countryType"
+        },
+        "startDate": {
+          "$ref": "#/definitions/dateString"
+        },
+        "endDate": {
+          "$ref": "#/definitions/dateString"
+        }
+      },
+      "required": [
+        "lineNo",
+        "orgName",
+        "address",
+        "govLawCountry",
+        "startDate"
       ],
       "additionalProperties": false
     },
@@ -1593,7 +1748,7 @@
       "properties": {
         "buildingLandName": {
           "type": "string",
-          "pattern": "^[0-9a-zA-Z{\u00C0-\u02FF\u2019}\\- \\u005C&`'^]{1,56}$"
+          "pattern": "^[0-9a-zA-Z{À-˿’}\\- \\u005C&`'^]{1,56}$"
         },
         "address": {
           "$ref": "#/definitions/addressType"
@@ -1881,6 +2036,14 @@
         "ZM",
         "ZW"
       ]
+    },
+    "urnString": {
+      "type": "string",
+      "pattern": "^[0-9A-Z]{15}$"
+    },
+    "checkElement": {
+      "description": "True or False",
+      "type": "boolean"
     }
   }
 }
