@@ -22,7 +22,7 @@ import utils.JsonUtils
 
 class ValidationServiceSpec extends SpecBase {
 
-  val displayTrustsSchema = "/resources/schemas/display-trusts-3.0.json"
+  val displayTrustsSchema = "/resources/schemas/display-trust-or-estate-4.1.0.json"
   val displayValidator = new ValidationService().get(displayTrustsSchema)
 
   "ValidationService " should {

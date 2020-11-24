@@ -21,22 +21,6 @@
       },
       "phoneNumber": "07598765432"
     },
-    "yearsReturns": {
-      "returns": [
-        {
-          "taxReturnYear": "16",
-          "taxConsequence": true
-        },
-        {
-          "taxReturnYear": "17",
-          "taxConsequence": true
-        },
-        {
-          "taxReturnYear": "18",
-          "taxConsequence": true
-        }
-      ]
-    },
     "declaration": {
       "name": {
         "firstName": "Alister",

@@ -29,7 +29,7 @@ class StubControllerSpec extends SpecBase {
   private implicit val cc: ControllerComponents = app.injector.instanceOf[ControllerComponents]
   private val headerValidatorAction: HeaderValidatorAction = app.injector.instanceOf[HeaderValidatorAction]
 
-  private val displayTrustsSchema = "/resources/schemas/display-trusts-3.0.json"
+  private val displayTrustsSchema = "/resources/schemas/display-trust-or-estate-4.1.0.json"
   private val displayValidator = new ValidationService().get(displayTrustsSchema)
 
   val SUT = new StubController(headerValidatorAction)
