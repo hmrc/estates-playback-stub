@@ -32,16 +32,10 @@ class Stub5mldController @Inject()(headerValidatorAction: HeaderValidatorAction)
     if(is5mldIdValid(id)) {
       id match {
         // 5mld taxable estates
-        case "1000000001" | "1000000002" | "1000000003" | "1000000007" | "1000000008" | "1000000101" | "1000000102" | "5174384721" | "1000000011" =>
+        case "2500000001" | "2500000002" | "2500000003" | "2500000007" | "2500000008" | "2500000101" | "2500000102" | "2500000011" =>
           json5mldResult(id)
         // 4MLD taxable estate registered, first time played back under 5MLD. User needs to answer additional questions
-        case "1000000010" =>
-          json5mldResult(id)
-        // 5mld non-taxable estates with URN
-        case "1234567890AAAAA" | "0000000001AAAAA" | "0000000002AAAAA" | "0000000003AAAAA" | "0000000004AAAAA" =>
-          json5mldResult(id)
-        // 5mld non-taxable estates with UTR
-        case "1000000103" =>
+        case "2500000010" =>
           json5mldResult(id)
         // In Processing, Closed and Pending Closure
         case "1111111111" | "1111111112" | "1111111113" =>
