@@ -1,0 +1,78 @@
+{
+  "responseHeader": {
+    "dfmcaReturnUserStatus": "Processed",
+    "formBundleNo": "000012345678"
+  },
+  "trustOrEstateDisplay": {
+    "applicationType": "01",
+    "matchData": {
+      "utr": "2500000008"
+    },
+    "correspondence": {
+      "abroadIndicator": false,
+      "name": "1234567890 QwErTyUiOp ,.(/)&'- name",
+      "address": {
+        "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "line3": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "line4": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "postCode": "NE98 1YX",
+        "country": "GB"
+      },
+      "phoneNumber": "+123456789012345678",
+      "welsh": false,
+      "braille": false
+    },
+    "declaration": {
+      "name": {
+        "firstName": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "lastName": "1234567890 QwErTyUiOp ,.(/)&'- name"
+      },
+      "address": {
+        "line1": "DECLARED WITH NINO",
+        "line2": "DECLARED WITH NINO",
+        "postCode": "XX1 1XX",
+        "country": "GB"
+      }
+    },
+    "details": {
+      "estate": {
+        "entities": {
+          "personalRepresentative": {
+            "lineNo": "1",
+            "bpMatchStatus": "01",
+            "entityStart": "2017-02-28",
+            "orgName": "1234567890 QwErTyUiOp ,.(/)&'- name",
+            "identification": {
+              "address": {
+                "line1": "Address line 1",
+                "line2": "Address line 2",
+                "line3": "Address line 3",
+                "line4": "Town or city",
+                "country": "DE"
+              }
+            },
+            "phoneNumber": "078888888"
+          },
+          "deceased": {
+            "lineNo": "1",
+            "bpMatchStatus": "01",
+            "entityStart": "2018-02-28",
+            "name": {
+              "firstName": "Wilbert",
+              "middleName": "Charles",
+              "lastName": "Jefferies"
+            },
+            "dateOfBirth": "1980-06-01",
+            "dateOfDeath": "2014-04-06",
+            "identification": {
+              "nino": "JS123456A"
+            }
+          }
+        },
+        "periodTaxDues": "01"
+      }
+    },
+    "submissionDate": "2020-09-01"
+  }
+}

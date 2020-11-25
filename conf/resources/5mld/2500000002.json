@@ -1,0 +1,83 @@
+{
+  "trustOrEstateDisplay": {
+    "applicationType": "01",
+    "matchData": {
+      "utr": "2500000002"
+    },
+    "correspondence": {
+      "abroadIndicator": false,
+      "name": "1234567890 QwErTyUiOp ,.(/)&'- name",
+      "address": {
+        "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "postCode": "SR2 7UY",
+        "country": "GB"
+      },
+      "phoneNumber": "+123456789012345678",
+      "welsh": true,
+      "braille": true
+    },
+    "declaration": {
+      "name": {
+        "firstName": "qwerty ,.(/)&'-",
+        "lastName": "qwerty ,.(/)&'-"
+      },
+      "address": {
+        "line1": "DECLARED WITH UTR",
+        "line2": "DECLARED WITH UTR",
+        "postCode": "XX1 1XX",
+        "country": "GB"
+      }
+    },
+    "details": {
+      "estate": {
+        "entities": {
+          "personalRepresentative": {
+            "lineNo": "1",
+            "bpMatchStatus": "01",
+            "entityStart": "2017-02-28",
+            "name": {
+              "firstName": "Alister",
+              "lastName": "Mc'Govern"
+            },
+            "dateOfBirth": "1980-06-01",
+            "identification": {
+              "nino": "JS123456A"
+            },
+            "phoneNumber": "078888888"
+          },
+          "deceased": {
+            "lineNo": "1",
+            "bpMatchStatus": "01",
+            "entityStart": "2017-02-28",
+            "name": {
+              "firstName": "Wilbert",
+              "middleName": "Charles",
+              "lastName": "Jefferies"
+            },
+            "dateOfBirth": "1980-06-01",
+            "dateOfDeath": "1969-02-26",
+            "identification": {
+              "passport": {
+                "number": "KSJDFKSDHF6456545147852369QW26",
+                "expirationDate": "2020-02-02",
+                "countryOfIssue": "FR"
+              },
+              "address": {
+                "line1": "International address line 1",
+                "line2": "International address line 2",
+                "line3": "International address line 3",
+                "country": "ES"
+              }
+            }
+          }
+        },
+        "periodTaxDues": "01"
+      }
+    }
+  },
+  "responseHeader": {
+    "dfmcaReturnUserStatus": "Processed",
+    "formBundleNo": "100000000002"
+  }
+}

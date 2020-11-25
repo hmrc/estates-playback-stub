@@ -1,0 +1,77 @@
+{
+  "responseHeader": {
+    "dfmcaReturnUserStatus": "Processed",
+    "formBundleNo": "000001234567"
+  },
+  "trustOrEstateDisplay": {
+    "applicationType": "01",
+    "matchData": {
+      "utr": "2500000102"
+    },
+    "correspondence": {
+      "abroadIndicator": true,
+      "name": "1234567890 QwErTyUiOp ,.(/)&'- name",
+      "address": {
+        "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "line3": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "country": "DE"
+      },
+      "phoneNumber": "+123456789012345678",
+      "welsh": false,
+      "braille": false
+    },
+    "declaration": {
+      "name": {
+        "firstName": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "lastName": "1234567890 QwErTyUiOp ,.(/)&'- name"
+      },
+      "address": {
+        "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "line3": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "country": "DE"
+      }
+    },
+    "details": {
+      "estate": {
+        "entities": {
+          "personalRepresentative": {
+            "lineNo": "1",
+            "bpMatchStatus": "01",
+            "entityStart": "2017-02-28",
+            "orgName": "1234567890 QwErTyUiOp ,.(/)&'- name",
+            "identification": {
+              "utr": "1234567890"
+            },
+            "phoneNumber": "07888788888"
+          },
+          "deceased": {
+            "lineNo": "1",
+            "bpMatchStatus": "01",
+            "entityStart": "2017-02-28",
+            "name": {
+              "firstName": "Eddie",
+              "middleName": "Blanco",
+              "lastName": "Murphy"
+            },
+            "dateOfBirth": "1980-06-01",
+            "dateOfDeath": "2019-01-01",
+            "identification": {
+              "address": {
+                "line1": "Address line 1",
+                "line2": "Address line 2",
+                "line3": "Address line 3",
+                "line4": "Town or city",
+                "postCode": "Z99 2YY",
+                "country": "GB"
+              }
+            }
+          }
+        },
+        "periodTaxDues": "01"
+      }
+    },
+    "submissionDate": "2020-01-01"
+  }
+}

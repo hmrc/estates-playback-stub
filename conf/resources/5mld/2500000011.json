@@ -1,0 +1,86 @@
+{
+  "responseHeader": {
+    "dfmcaReturnUserStatus": "Processed",
+    "formBundleNo": "000123456789"
+  },
+  "trustOrEstateDisplay": {
+    "applicationType": "01",
+    "matchData": {
+      "utr": "2500000011"
+    },
+    "correspondence": {
+      "abroadIndicator": false,
+      "name": "1234567890 QwErTyUiOp ,.(/)&'- name",
+      "address": {
+        "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "line3": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "line4": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "postCode": "NE98 1YX",
+        "country": "GB"
+      },
+      "phoneNumber": "+123456789012345678"
+    },
+    "declaration": {
+      "name": {
+        "firstName": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "lastName": "1234567890 QwErTyUiOp ,.(/)&'- name"
+      },
+      "address": {
+        "line1": "DECLARED WITH NINO",
+        "line2": "DECLARED WITH NINO",
+        "postCode": "XX1 1XX",
+        "country": "GB"
+      }
+    },
+    "details": {
+      "estate": {
+        "entities": {
+          "personalRepresentative": {
+            "lineNo": "1",
+            "bpMatchStatus": "01",
+            "entityStart": "2017-02-28",
+            "orgName": "1234567890 QwErTyUiOp ,.(/)&'- name",
+            "identification": {
+              "address": {
+                "line1": "Address line 1",
+                "line2": "Address line 2",
+                "line3": "Address line 3",
+                "line4": "Town or city",
+                "postCode": "LS4 2SF",
+                "country": "GB"
+              }
+            },
+            "phoneNumber": "07888888348"
+          },
+          "deceased": {
+            "lineNo": "1",
+            "bpMatchStatus": "01",
+            "entityStart": "2017-02-28",
+            "name": {
+              "firstName": "Bonnie",
+              "middleName": "Charles",
+              "lastName": "Carter"
+            },
+            "dateOfBirth": "1980-06-01",
+            "dateOfDeath": "2007-03-25",
+            "identification": {
+              "passport": {
+                "number": "KSJDFKSDHF6456545147852369QW26",
+                "expirationDate": "2020-02-02",
+                "countryOfIssue": "FR"
+              },
+              "address": {
+                "line1": "International address line 1",
+                "line2": "International address line 2",
+                "line3": "International address line 3",
+                "country": "ES"
+              }
+            }
+          }
+        },
+        "periodTaxDues": "01"
+      }
+    }
+  }
+}

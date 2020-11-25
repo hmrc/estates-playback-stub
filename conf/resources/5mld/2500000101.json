@@ -1,0 +1,82 @@
+{
+  "trustOrEstateDisplay": {
+    "applicationType": "01",
+    "matchData": {
+      "utr": "2500000101"
+    },
+    "correspondence": {
+      "abroadIndicator": false,
+      "name": "1234567890 QwErTyUiOp ,.(/)&'- name",
+      "address": {
+        "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "postCode": "SR2 7UY",
+        "country": "GB"
+      },
+      "phoneNumber": "+123456789012345678",
+      "welsh": false,
+      "braille": false
+    },
+    "declaration": {
+      "name": {
+        "firstName": "1234567890 QwErTyUiOp ,.(\/)&'- name",
+        "lastName": "1234567890 QwErTyUiOp ,.(\/)&'- name"
+      },
+      "address": {
+        "line1": "DECLARED WITH NINO",
+        "line2": "DECLARED WITH NINO",
+        "postCode": "XX1 1XX",
+        "country": "GB"
+      }
+    },
+    "details": {
+      "estate": {
+        "entities": {
+          "personalRepresentative": {
+            "lineNo": "1",
+            "bpMatchStatus": "01",
+            "entityStart": "2017-02-28",
+            "name": {
+              "firstName": "Marie",
+              "middleName": "Stuart",
+              "lastName": "Davison"
+            },
+            "dateOfBirth": "1983-09-24",
+            "identification": {
+              "nino": "AA000003A"
+            },
+            "phoneNumber": "078888888",
+            "email": "test@abc.com"
+          },
+          "deceased": {
+            "lineNo": "1",
+            "bpMatchStatus": "01",
+            "entityStart": "2017-02-28",
+            "name": {
+              "firstName": "David",
+              "middleName": "Charles",
+              "lastName": "Egerton"
+            },
+            "dateOfBirth": "1980-06-01",
+            "dateOfDeath": "1993-03-18",
+            "identification": {
+              "address": {
+                "line1": "Address line 1",
+                "line2": "Address line 2",
+                "line3": "Address line 3",
+                "line4": "Town or city",
+                "postCode": "Z99 2YY",
+                "country": "GB"
+              }
+            }
+          }
+        },
+        "periodTaxDues": "01"
+      }
+    }
+  },
+  "responseHeader": {
+    "dfmcaReturnUserStatus": "Processed",
+    "formBundleNo": "000000000101"
+  }
+}

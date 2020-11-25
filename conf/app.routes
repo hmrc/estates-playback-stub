@@ -1,3 +1,6 @@
 # microservice specific routes
 
-GET        /trusts/registration/:utr controllers.StubController.getEstate(utr: String)
+# 4MLD
+GET        /trusts/registration/:utr controllers.Stub4mldController.getEstate(utr: String)
+# 5MLD
+GET        /trusts/registration/UTR/:utr controllers.Stub5mldController.getEstate(utr: String)

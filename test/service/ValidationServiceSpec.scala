@@ -21,18 +21,74 @@ import models.{FailedValidation, SuccessfulValidation}
 import utils.JsonUtils
 
 class ValidationServiceSpec extends SpecBase {
+  
+  private val displayValidator5mld = new ValidationService().get(
+    "/resources/schemas/5mld/display-trust-or-estate-4.1.0.json"
+  )
 
-  val displayTrustsSchema = "/resources/schemas/display-trust-or-estate-4.1.0.json"
-  val displayValidator = new ValidationService().get(displayTrustsSchema)
-
+  private val displayValidator4mld = new ValidationService().get(
+    "/resources/schemas/4mld/display-estates-3.0.json"
+  )
+  
+  
   "ValidationService " should {
-    "return success validation for valid json" in {
-      val jsonString = JsonUtils.jsonFromFile("/resources/2000000000.json").toString()
-      val validationResult = displayValidator.validateAgainstSchema(jsonString)
+    "return success validation for valid 4mld json utr 2000000000" in {
+      val jsonString = JsonUtils.jsonFromFile(get4mldPath("2000000000")).toString()
+      val validationResult = displayValidator4mld.validateAgainstSchema(jsonString)
       validationResult mustBe SuccessfulValidation
     }
+
+    "return success validation for valid 5mld json utr 2500000001" in {
+      val jsonString = JsonUtils.jsonFromFile(get5mldPath("2500000001")).toString()
+      val validationResult = displayValidator5mld.validateAgainstSchema(jsonString)
+      validationResult mustBe SuccessfulValidation
+    }
+
+    "return success validation for valid 5mld json utr 2500000002" in {
+      val jsonString = JsonUtils.jsonFromFile(get5mldPath("2500000002")).toString()
+      val validationResult = displayValidator5mld.validateAgainstSchema(jsonString)
+      validationResult mustBe SuccessfulValidation
+    }
+
+    "return success validation for valid 5mld json utr 2500000003" in {
+      val jsonString = JsonUtils.jsonFromFile(get5mldPath("2500000003")).toString()
+      val validationResult = displayValidator5mld.validateAgainstSchema(jsonString)
+      validationResult mustBe SuccessfulValidation
+    }
+
+    "return success validation for valid 5mld json utr 2500000007" in {
+      val jsonString = JsonUtils.jsonFromFile(get5mldPath("2500000007")).toString()
+      val validationResult = displayValidator5mld.validateAgainstSchema(jsonString)
+      validationResult mustBe SuccessfulValidation
+    }
+
+    "return success validation for valid 5mld json utr 2500000008" in {
+      val jsonString = JsonUtils.jsonFromFile(get5mldPath("2500000008")).toString()
+      val validationResult = displayValidator5mld.validateAgainstSchema(jsonString)
+      validationResult mustBe SuccessfulValidation
+    }
+
+    "return success validation for valid 5mld json utr 2500000010" in {
+      val jsonString = JsonUtils.jsonFromFile(get5mldPath("2500000010")).toString()
+      val validationResult = displayValidator5mld.validateAgainstSchema(jsonString)
+      validationResult mustBe SuccessfulValidation
+    }
+
+    "return success validation for valid 5mld json utr 2500000101" in {
+      val jsonString = JsonUtils.jsonFromFile(get5mldPath("2500000101")).toString()
+      val validationResult = displayValidator5mld.validateAgainstSchema(jsonString)
+      validationResult mustBe SuccessfulValidation
+    }
+
+    "return success validation for valid 5mld json utr 2500000102" in {
+      val jsonString = JsonUtils.jsonFromFile(get5mldPath("2500000102")).toString()
+      val validationResult = displayValidator5mld.validateAgainstSchema(jsonString)
+      validationResult mustBe SuccessfulValidation
+    }
+
+
     "return failed validation for not json" in {
-      val validationResult = displayValidator.validateAgainstSchema("Fred")
+      val validationResult = displayValidator5mld.validateAgainstSchema("Fred")
       validationResult mustBe FailedValidation("Not JSON", 0, Nil)
     }
     "return failed validation for duplicate properties" in {
@@ -43,11 +99,11 @@ class ValidationServiceSpec extends SpecBase {
           | "field": 2
           |}
           |""".stripMargin
-      val validationResult = displayValidator.validateAgainstSchema(json)
+      val validationResult = displayValidator5mld.validateAgainstSchema(json)
       validationResult mustBe FailedValidation("Not JSON", 0, Nil)
     }
     "return failed validation for invalid json" in {
-      val validationResult = displayValidator.validateAgainstSchema("{}")
+      val validationResult = displayValidator5mld.validateAgainstSchema("{}")
       val result = validationResult.asInstanceOf[FailedValidation]
       result mustNot be(null)
       result.message mustBe "Invalid Json"
@@ -55,4 +111,11 @@ class ValidationServiceSpec extends SpecBase {
 
   }
 
+  private def get4mldPath(utr: String): String = {
+    s"/resources/4mld/$utr.json"
+  }
+
+  private def get5mldPath(utr: String): String = {
+    s"/resources/5mld/$utr.json"
+  }
 }
