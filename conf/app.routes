@@ -4,4 +4,3 @@
 GET        /trusts/registration/:utr controllers.Stub4mldController.getEstate(utr: String)
 # 5MLD
 GET        /trusts/registration/UTR/:utr controllers.Stub5mldController.getEstate(utr: String)
-GET        /trusts/registration/URN/:urn controllers.Stub5mldController.getEstate(urn: String)

@@ -32,176 +32,45 @@
       }
     },
     "details": {
-      "trust": {
-        "details": {
-          "startDate": "2015-04-06",
-          "trustTaxable": true,
-          "expressTrust": false,
-          "trustRecorded": true,
-          "trustUKRelation": true,
-          "trustUKProperty": true,
-          "trustUKResident": true,
-          "administrationCountry": "GB",
-          "residentialStatus": {
-            "uk": {
-              "scottishLaw": false
-            }
-          },
-          "typeOfTrust": "Inter vivos Settlement"
-        },
+      "estate": {
         "entities": {
-          "naturalPerson": [
-            {
-              "lineNo": "1",
-              "bpMatchStatus": "01",
-              "name": {
-                "firstName": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                "lastName": "1234567890 QwErTyUiOp ,.(/)&'- name"
-              },
-              "identification": {
-                "nino": "AA000004A"
-              },
-              "countryOfResidence": "DE",
-              "nationality": "DE",
-              "legallyIncapable": false,
-              "entityStart": "2019-09-23"
-            }
-          ],
-          "beneficiary": {
-            "company": [
-              {
-                "lineNo": "2",
-                "bpMatchStatus": "01",
-                "organisationName": "1234567890 QwErTyUiOp ,.(/)&'- na01",
-                "beneficiaryDiscretion": true,
-                "identification": {
-                  "address": {
-                    "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                    "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                    "postCode": "Z99 2YY",
-                    "country": "GB"
-                  }
-                },
-                "countryOfResidence": "DE",
-                "entityStart": "2019-09-23"
-              }
-            ]
-          },
-          "leadTrustees": {
-            "lineNo": "3",
+          "personalRepresentative": {
+            "lineNo": "1",
             "bpMatchStatus": "01",
-            "name": {
-              "firstName": "1234567890 QwErTyUiOp ,.(\/)&'- name",
-              "lastName": "1234567890 QwErTyUiOp ,.(\/)&'- name"
-            },
-            "dateOfBirth": "2015-03-20",
+            "entityStart": "2017-02-28",
+            "orgName": "1234567890 QwErTyUiOp ,.(/)&'- name",
             "identification": {
-              "nino": "AA100001A"
+              "utr": "1234567890"
             },
-            "phoneNumber": "+123456789012345678",
-            "countryOfResidence": "DE",
-            "nationality": "DE",
-            "legallyIncapable": false,
-            "entityStart": "2019-09-23"
+            "phoneNumber": "078888888"
           },
-          "trustees": [
-            {
-              "trusteeInd": {
-                "lineNo": "4",
-                "bpMatchStatus": "99",
-                "name": {
-                  "firstName": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                  "lastName": "1234567890 QwErTyUiOp ,.(/)&'- name"
-                },
-                "dateOfBirth": "1983-09-24",
-                "countryOfResidence": "DE",
-                "nationality": "DE",
-                "legallyIncapable": false,
-                "entityStart": "2019-09-23"
+          "deceased": {
+            "lineNo": "1",
+            "bpMatchStatus": "01",
+            "entityStart": "2018-02-28",
+            "name": {
+              "firstName": "Wilbert",
+              "middleName": "Charles",
+              "lastName": "Jefferies"
+            },
+            "dateOfBirth": "1980-06-01",
+            "dateOfDeath": "2014-04-06",
+            "identification": {
+              "passport": {
+                "number": "KSJDFKSDHF6456545147852369QW26",
+                "expirationDate": "2020-02-02",
+                "countryOfIssue": "FR"
+              },
+              "address": {
+                "line1": "International address line 1",
+                "line2": "International address line 2",
+                "line3": "International address line 3",
+                "country": "ES"
               }
             }
-          ],
-          "protectors": {
-            "protector": [
-              {
-                "lineNo": "5",
-                "bpMatchStatus": "01",
-                "name": {
-                  "firstName": "1234567890 QwErTyUiOp ,.(/)&'- na01",
-                  "lastName": "1234567890 QwErTyUiOp ,.(/)&'- name"
-                },
-                "entityStart": "2019-09-23"
-              }
-            ]
-          },
-          "settlors": {
-            "settlor": [
-              {
-                "lineNo": "6",
-                "bpMatchStatus": "01",
-                "name": {
-                  "firstName": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                  "lastName": "1234567890 QwErTyUiOp ,.(/)&'- name"
-                },
-                "dateOfBirth": "1983-09-24",
-                "identification": {
-                  "nino": "AA000001A"
-                },
-                "entityStart": "2019-09-23"
-              }
-            ]
           }
         },
-        "assets": {
-          "monetary": [
-            {
-              "assetMonetaryAmount": 999999999
-            }
-          ],
-          "propertyOrLand": [
-            {
-              "buildingLandName": "1234567890&`'^ -QWERTYqwertyzxcvbnmasdfghjklpoiuypoiuytr",
-              "valueFull": 999999999999,
-              "valuePrevious": 999999999999
-            }
-          ],
-          "business": [
-            {
-              "address": {
-                "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                "line3": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                "line4": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                "postCode": "Z99 2YY",
-                "country": "GB"
-              },
-              "orgName": "1234567890 QwErTyUiOp ,.(/)&'- name",
-              "businessDescription": "1234567890&`'^ -QWERTYqwertyzxcvbnmasdfghjklpoiuypoiuytr",
-              "businessValue": 999999999999
-            }
-          ],
-          "other": [
-            {
-              "description": "1234567890&`'^ -QWERTYqwertyzxcvbnmasdfghjklpoiuypoiuytr",
-              "value": 999999999999
-            }
-          ],
-          "partnerShip": [
-            {
-              "description": "1234567890&`'^ -QWERTYqwertyzxcvbnmasdfghjklpoiuypoiuytr",
-              "partnershipStart": "2015-03-20"
-            }
-          ],
-          "shares": [
-            {
-              "numberOfShares": "999999999999",
-              "orgName": "1234567890 QwErTyUiOp ,.(/)&'- name",
-              "shareClass": "Preference shares",
-              "typeOfShare": "Quoted",
-              "value": 999999999999
-            }
-          ]
-        }
+        "periodTaxDues": "01"
       }
     }
   },

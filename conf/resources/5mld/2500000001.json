@@ -30,165 +30,42 @@
       }
     },
     "details": {
-      "trust": {
-        "details": {
-          "startDate": "2020-04-06",
-          "lawCountry": "DE",
-          "administrationCountry": "DE",
-          "trustTaxable": true,
-          "expressTrust": false,
-          "trustRecorded": true,
-          "trustUKRelation": true,
-          "trustUKProperty": false,
-          "trustUKResident": true,
-          "residentialStatus": {
-            "nonUK": {
-              "sch5atcgga92": true,
-              "trusteeStatus": "Non Resident Domiciled"
-            }
-          },
-          "typeOfTrust": "Will Trust or Intestacy Trust"
-        },
+      "estate": {
         "entities": {
-          "beneficiary": {
-            "individualDetails": [
-              {
-                "lineNo": "1",
-                "bpMatchStatus": "01",
-                "name": {
-                  "firstName": "1234567890 QwErTyUiOp ,.(\/)&'- name",
-                  "lastName": "1234567890 QwErTyUiOp ,.(\/)&'- name"
-                },
-                "vulnerableBeneficiary": true,
-                "beneficiaryDiscretion": true,
-                "entityStart": "2020-09-23"
+          "personalRepresentative": {
+            "lineNo": "1",
+            "bpMatchStatus": "01",
+            "entityStart": "2017-02-28",
+            "orgName": "1234567890 QwErTyUiOp ,.(/)&'- name",
+            "identification": {
+              "address": {
+                "line1": "Address line 1",
+                "line2": "Address line 2",
+                "line3": "Address line 3",
+                "line4": "Town or city",
+                "postCode": "Z99 2YY",
+                "country": "GB"
               }
-            ],
-            "company": [
-              {
-                "lineNo": "2",
-                "bpMatchStatus": "01",
-                "organisationName": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                "beneficiaryDiscretion": true,
-                "countryOfResidence": "DE",
-                "entityStart": "2020-09-23"
-              }
-            ],
-            "trust": [
-              {
-                "lineNo": "3",
-                "bpMatchStatus": "01",
-                "organisationName": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                "beneficiaryDiscretion": true,
-                "countryOfResidence": "DE",
-                "entityStart": "2020-09-23"
-              }
-            ],
-            "charity": [
-              {
-                "lineNo": "4",
-                "bpMatchStatus": "01",
-                "organisationName": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                "beneficiaryDiscretion": true,
-                "countryOfResidence": "DE",
-                "entityStart": "2020-09-23"
-              }
-            ],
-            "unidentified": [
-              {
-                "lineNo": "5",
-                "description": "1234567890&`'^ -QWERTYqwertyzxcvbnmasdfghjklpoiuypoiuytr",
-                "beneficiaryDiscretion": false,
-                "beneficiaryShareOfIncome": "100",
-                "entityStart": "2020-09-23"
-              }
-            ],
-            "large": [
-              {
-                "lineNo": "6",
-                "bpMatchStatus": "01",
-                "organisationName": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                "description": "1234567890&`'^ -QWERTYqwertyzxcvbnmasdfghjklpoiuypoiuytr",
-                "numberOfBeneficiary": "1",
-                "countryOfResidence": "DE",
-                "beneficiaryDiscretion": false,
-                "beneficiaryShareOfIncome": "100",
-                "entityStart": "2020-09-23"
-              }
-            ],
-            "other": [
-              {
-                "lineNo": "7",
-                "description": "1234567890&`'^ -QWERTYqwertyzxcvbnmasdfghjklpoiuypoiuytr",
-                "beneficiaryDiscretion": true,
-                "countryOfResidence": "DE",
-                "entityStart": "2020-09-23"
-              }
-            ]
+            },
+            "phoneNumber": "078888888"
           },
           "deceased": {
-            "lineNo": "8",
-            "name": {
-              "firstName": "John",
-              "lastName": "O'Connor"
-            },
-            "entityStart": "2018-04-05"
-          },
-          "leadTrustees": {
-            "lineNo": "9",
+            "lineNo": "1",
             "bpMatchStatus": "01",
+            "entityStart": "2018-02-28",
             "name": {
-              "firstName": "1234567890 QwErTyUiOp ,.(\/)&'- name",
-              "lastName": "1234567890 QwErTyUiOp ,.(\/)&'- name"
+              "firstName": "Wilbert",
+              "middleName": "Charles",
+              "lastName": "Jefferies"
             },
-            "dateOfBirth": "2015-03-20",
+            "dateOfBirth": "1980-06-01",
+            "dateOfDeath": "2014-04-06",
             "identification": {
-              "nino": "SJ123456B"
-            },
-            "phoneNumber": "+123456789012345678",
-            "countryOfResidence": "DE",
-            "nationality": "DE",
-            "entityStart": "2019-09-23"
-          },
-          "trustees": [
-            {
-              "trusteeInd": {
-                "lineNo": "10",
-                "bpMatchStatus": "99",
-                "name": {
-                  "firstName": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                  "lastName": "1234567890 QwErTyUiOp ,.(/)&'- name"
-                },
-                "countryOfResidence": "DE",
-                "nationality": "DE",
-                "legallyIncapable": false,
-                "entityStart": "2019-09-23"
-              }
+              "nino": "JS123456A"
             }
-          ],
-          "settlors": {
-            "settlor": [
-              {
-                "lineNo": "11",
-                "bpMatchStatus": "01",
-                "name": {
-                  "firstName": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                  "lastName": "1234567890 QwErTyUiOp ,.(/)&'- name"
-                },
-                "countryOfResidence": "DE",
-                "legallyIncapable": false,
-                "entityStart": "2019-09-23"
-              }
-            ]
           }
         },
-        "assets": {
-          "monetary": [
-            {
-              "assetMonetaryAmount": 1000000000
-            }
-          ]
-        }
+        "periodTaxDues": "01"
       }
     }
   },

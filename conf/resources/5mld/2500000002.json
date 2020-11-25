@@ -30,208 +30,49 @@
       }
     },
     "details": {
-      "trust": {
-        "details": {
-          "startDate": "2019-06-01",
-          "trustUKProperty": false,
-          "trustUKResident": false,
-          "lawCountry": "DE",
-          "administrationCountry": "DE",
-          "trustTaxable": true,
-          "expressTrust": true,
-          "trustRecorded": true,
-          "trustUKRelation": true,
-          "residentialStatus": {
-            "nonUK": {
-              "sch5atcgga92": false,
-              "s218ihta84": true,
-              "agentS218IHTA84": true
-            }
-          },
-          "typeOfTrust": "Deed of Variation Trust or Family Arrangement",
-          "deedOfVariation": "Addition to the will trust"
-        },
+      "estate": {
         "entities": {
-          "naturalPerson": [
-            {
-              "lineNo": "1",
-              "bpMatchStatus": "01",
-              "name": {
-                "firstName": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                "middleName": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                "lastName": "1234567890 QwErTyUiOp ,.(/)&'- name"
-              },
-              "identification": {
-                "passport": {
-                  "number": "KSJDFKSDHF64565451478523NATPER",
-                  "expirationDate": "2020-02-02",
-                  "countryOfIssue": "DE"
-                },
-                "address": {
-                  "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                  "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                  "postCode": "Z99 2YY",
-                  "country": "GB"
-                }
-              },
-              "countryOfResidence": "GB",
-              "nationality": "DE",
-              "legallyIncapable": false,
-              "entityStart": "2019-09-23"
-            }
-          ],
-          "beneficiary": {
-            "company": [
-              {
-                "lineNo": "2",
-                "bpMatchStatus": "01",
-                "organisationName": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                "beneficiaryDiscretion": false,
-                "beneficiaryShareOfIncome": "100",
-                "countryOfResidence": "DE",
-                "identification": {
-                  "address": {
-                    "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                    "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                    "country": "DE"
-                  }
-                },
-                "entityStart": "2019-09-23"
-              }
-            ]
-          },
-          "leadTrustees": {
-            "lineNo": "3",
+          "personalRepresentative": {
+            "lineNo": "1",
             "bpMatchStatus": "01",
-            "name": "1234567890 QwErTyUiOp ,.(/)&'- name",
-            "phoneNumber": "+012345678901234567",
-            "countryOfResidence": "DE",
-            "identification": {
-              "utr": "5465416546"
+            "entityStart": "2017-02-28",
+            "name": {
+              "firstName": "Alister",
+              "lastName": "Mc'Govern"
             },
-            "entityStart": "2019-09-23"
+            "dateOfBirth": "1980-06-01",
+            "identification": {
+              "nino": "JS123456A"
+            },
+            "phoneNumber": "078888888"
           },
-          "trustees": [
-            {
-              "trusteeInd": {
-                "lineNo": "4",
-                "bpMatchStatus": "99",
-                "name": {
-                  "firstName": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                  "middleName": "1234567890 QwErTyUiOp ,.(\/)&'- name",
-                  "lastName": "1234567890 QwErTyUiOp ,.(/)&'- name"
-                },
-                "identification": {
-                  "passport": {
-                    "number": "KSJDFKSDHF645654514TRUSTEEIND1",
-                    "expirationDate": "2020-02-02",
-                    "countryOfIssue": "DE"
-                  },
-                  "address": {
-                    "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                    "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                    "postCode": "Z99 2YY",
-                    "country": "GB"
-                  }
-                },
-                "dateOfBirth": "1983-09-24",
-                "countryOfResidence": "DE",
-                "nationality": "DE",
-                "legallyIncapable": false,
-                "entityStart": "2019-09-23"
+          "deceased": {
+            "lineNo": "1",
+            "bpMatchStatus": "01",
+            "entityStart": "2017-02-28",
+            "name": {
+              "firstName": "Wilbert",
+              "middleName": "Charles",
+              "lastName": "Jefferies"
+            },
+            "dateOfBirth": "1980-06-01",
+            "dateOfDeath": "1969-02-26",
+            "identification": {
+              "passport": {
+                "number": "KSJDFKSDHF6456545147852369QW26",
+                "expirationDate": "2020-02-02",
+                "countryOfIssue": "FR"
+              },
+              "address": {
+                "line1": "International address line 1",
+                "line2": "International address line 2",
+                "line3": "International address line 3",
+                "country": "ES"
               }
             }
-          ],
-          "deceased": {
-            "lineNo": "5",
-            "name": {
-              "firstName": "John",
-              "middleName": "William",
-              "lastName": "O'Connor"
-            },
-            "dateOfBirth": "1956-02-12",
-            "dateOfDeath": "2016-01-01",
-            "identification": {
-              "address": {
-                "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                "country": "DE"
-              }
-            },
-            "entityStart": "2019-09-23"
-          },
-          "protectors": {
-            "protector": [
-              {
-                "lineNo": "6",
-                "bpMatchStatus": "01",
-                "name": {
-                  "firstName": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                  "middleName": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                  "lastName": "1234567890 QwErTyUiOp ,.(/)&'- name"
-                },
-                "identification": {
-                  "passport": {
-                    "number": "KSJDFKSDHF6456545147852369QWER",
-                    "expirationDate": "2020-02-02",
-                    "countryOfIssue": "DE"
-                  },
-                  "address": {
-                    "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                    "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                    "postCode": "Z99 2YY",
-                    "country": "GB"
-                  }
-                },
-                "countryOfResidence": "DE",
-                "nationality": "DE",
-                "legallyIncapable": true,
-                "entityStart": "2019-09-23"
-              }
-            ]
-          },
-          "settlors": {
-            "settlor": [
-              {
-                "lineNo": "7",
-                "bpMatchStatus": "01",
-                "name": {
-                  "firstName": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                  "middleName": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                  "lastName": "1234567890 QwErTyUiOp ,.(/)&'- name"
-                },
-                "dateOfBirth": "1983-09-24",
-                "countryOfResidence": "DE",
-                "legallyIncapable": false,
-                "identification": {
-                  "passport": {
-                    "number": "KSJDFKSDHF6456545147852369QWER",
-                    "expirationDate": "2020-02-02",
-                    "countryOfIssue": "DE"
-                  },
-                  "address": {
-                    "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                    "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                    "postCode": "Z99 2YY",
-                    "country": "GB"
-                  }
-                },
-                "entityStart": "2019-09-23"
-              }
-            ]
           }
         },
-        "assets": {
-          "shares": [
-            {
-              "numberOfShares": "999999999999",
-              "orgName": "1234567890 QwErTyUiOp ,.(/)&'- name",
-              "shareClass": "Other",
-              "typeOfShare": "Unquoted",
-              "value": 999999999999
-            }
-          ]
-        }
+        "periodTaxDues": "01"
       }
     }
   },

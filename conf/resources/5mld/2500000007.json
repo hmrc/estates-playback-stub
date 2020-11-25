@@ -34,166 +34,49 @@
       }
     },
     "details": {
-      "trust": {
-        "details": {
-          "startDate": "2016-04-06",
-          "trustTaxable": true,
-          "expressTrust": false,
-          "trustRecorded": false,
-          "trustUKRelation": false,
-          "trustUKResident": false,
-          "trustUKProperty": true,
-          "lawCountry": "DE",
-          "administrationCountry": "GB",
-          "residentialStatus": {
-            "uk": {
-              "scottishLaw": true,
-              "preOffShore": "DE"
-            }
-          },
-          "typeOfTrust": "Flat Management Company or Sinking Fund"
-        },
+      "estate": {
         "entities": {
-          "beneficiary": {
-            "other": [
-              {
-                "lineNo": "1",
-                "bpMatchStatus": "01",
-                "entityStart": "2019-02-28",
-                "description": "1234567890&`'^ -QWERTYqwertyzxcvbnmasdfghjklpoiuypoiuytr",
-                "address": {
-                  "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                  "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                  "line3": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                  "country": "DE"
-                },
-                "beneficiaryDiscretion": false,
-                "beneficiaryShareOfIncome": "100",
-                "countryOfResidence": "FR"
-              }
-            ],
-            "trust": [
-              {
-                "lineNo": "1",
-                "bpMatchStatus": "01",
-                "entityStart": "2019-02-28",
-                "organisationName": "Trust Beneficiary 1",
-                "identification": {
-                  "address": {
-                    "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                    "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                    "line3": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                    "country": "DE"
-                  },
-                  "safeId": "XH0000100152371"
-                },
-                "beneficiaryDiscretion": false,
-                "beneficiaryShareOfIncome": "100",
-                "countryOfResidence": "FR"
-              },
-              {
-                "lineNo": "2",
-                "bpMatchStatus": "01",
-                "entityStart": "2019-02-28",
-                "organisationName": "Trust Beneficiary 2",
-                "identification": {
-                  "utr": "1111111111"
-                },
-                "beneficiaryDiscretion": false,
-                "beneficiaryShareOfIncome": "100",
-                "countryOfResidence": "DE"
-              }
-            ]
-          },
-          "leadTrustees": {
+          "personalRepresentative": {
             "lineNo": "1",
             "bpMatchStatus": "01",
-            "entityStart": "2019-02-28",
-            "name": "1234567890 QwErTyUiOp ,.(/)&'- name",
-            "phoneNumber": "0123456789012345678",
-            "email": "a@b.com",
+            "entityStart": "2017-02-28",
+            "orgName": "1234567890 QwErTyUiOp ,.(/)&'- name",
             "identification": {
               "address": {
-                "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                "line3": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                "line4": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                "postCode": "SR2 7UY",
+                "line1": "Address line 1",
+                "line2": "Address line 2",
+                "line3": "Address line 3",
+                "line4": "Town or city",
+                "postCode": "BN1 8SL",
                 "country": "GB"
-              },
-              "safeId": "XH0000100152371"
+              }
             },
-            "countryOfResidence": "DE"
+            "phoneNumber": "07888888348"
           },
-          "trustees": [
-            {
-              "trusteeOrg": {
-                "lineNo": "1",
-                "bpMatchStatus": "01",
-                "entityStart": "2019-02-28",
-                "name": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                "identification": {
-                  "address": {
-                    "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                    "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                    "line3": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                    "country": "DE"
-                  },
-                  "safeId": "XH0000100152371"
-                },
-                "countryOfResidence": "DE"
+          "deceased": {
+            "lineNo": "1",
+            "bpMatchStatus": "01",
+            "entityStart": "2017-02-28",
+            "name": {
+              "firstName": "Frank",
+              "middleName": "Ramirez",
+              "lastName": "Sinatra"
+            },
+            "dateOfBirth": "1980-06-01",
+            "dateOfDeath": "2003-08-03",
+            "identification": {
+              "address": {
+                "line1": "Address line 1",
+                "line2": "Address line 2",
+                "line3": "Address line 3",
+                "line4": "Town or city",
+                "postCode": "Z99 2YY",
+                "country": "GB"
               }
             }
-          ],
-          "protectors": {
-            "protectorCompany": [
-              {
-                "lineNo": "1",
-                "bpMatchStatus": "01",
-                "entityStart": "2019-02-28",
-                "name": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                "identification": {
-                  "address": {
-                    "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                    "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                    "line3": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                    "line4": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                    "postCode": "Z99 2YY",
-                    "country": "GB"
-                  },
-                  "safeId": "XH0000100152371"
-                },
-                "countryOfResidence": "FR"
-              }
-            ]
-          },
-          "settlors": {
-            "settlorCompany": [
-              {
-                "lineNo": "1",
-                "bpMatchStatus": "01",
-                "entityStart": "2019-02-28",
-                "name": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                "identification": {
-                  "address": {
-                    "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                    "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                    "line3": "1234567890 QwErTyUiOp ,.(/)&'- name",
-                    "country": "DE"
-                  }
-                },
-                "countryOfResidence": "FR"
-              }
-            ]
           }
         },
-        "assets": {
-          "monetary": [
-            {
-              "assetMonetaryAmount": 999999999
-            }
-          ]
-        }
+        "periodTaxDues": "01"
       }
     },
     "submissionDate": "2020-01-01"
