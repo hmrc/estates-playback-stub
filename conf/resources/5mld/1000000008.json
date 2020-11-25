@@ -1,0 +1,157 @@
+{
+  "responseHeader": {
+    "dfmcaReturnUserStatus": "Processed",
+    "formBundleNo": "000012345678"
+  },
+  "trustOrEstateDisplay": {
+    "applicationType": "01",
+    "matchData": {
+      "utr": "1000000008"
+    },
+    "correspondence": {
+      "abroadIndicator": false,
+      "name": "1234567890 QwErTyUiOp ,.(/)&'- name",
+      "address": {
+        "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "line3": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "line4": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "postCode": "NE98 1YX",
+        "country": "GB"
+      },
+      "phoneNumber": "+123456789012345678",
+      "welsh": false,
+      "braille": false
+    },
+    "declaration": {
+      "name": {
+        "firstName": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "lastName": "1234567890 QwErTyUiOp ,.(/)&'- name"
+      },
+      "address": {
+        "line1": "DECLARED WITH NINO",
+        "line2": "DECLARED WITH NINO",
+        "postCode": "XX1 1XX",
+        "country": "GB"
+      }
+    },
+    "details": {
+      "trust": {
+      "details": {
+        "startDate": "2017-04-06",
+        "trustTaxable": true,
+        "expressTrust": false,
+        "trustRecorded": false,
+        "trustUKRelation": false,
+        "trustUKResident": true,
+        "administrationCountry": "GB",
+        "residentialStatus": {
+          "uk": {
+            "scottishLaw": false
+          }
+        },
+        "typeOfTrust": "Heritage Maintenance Fund"
+      },
+      "entities": {
+        "beneficiary": {
+          "other": [
+            {
+              "lineNo": "1",
+              "bpMatchStatus": "01",
+              "entityStart": "2019-02-28",
+              "description": "1234567890&`'^ -QWERTYqwertyzxcvbnmasdfghjklpoiuypoiuytr",
+              "address": {
+                "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                "line3": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                "country": "DE"
+              },
+              "beneficiaryDiscretion": false,
+              "beneficiaryShareOfIncome": "100"
+            }
+          ]
+        },
+        "leadTrustees": {
+            "lineNo": "1",
+            "bpMatchStatus": "01",
+            "entityStart": "2019-02-28",
+            "name": {
+              "firstName": "1234567890 QwErTyUiOp ,.(/)&'- name",
+              "lastName": "1234567890 QwErTyUiOp ,.(/)&'- name"
+            },
+            "dateOfBirth": "2015-03-20",
+            "identification": {
+              "nino": "SJ123456B"
+            },
+            "phoneNumber": "+123456789012345678"
+        },
+        "trustees": [
+          {
+            "trusteeInd": {
+              "lineNo": "1",
+              "bpMatchStatus": "01",
+              "entityStart": "2019-02-28",
+              "name": {
+                "firstName": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                "lastName": "1234567890 QwErTyUiOp ,.(/)&'- name"
+              },
+              "dateOfBirth": "1983-09-24",
+              "identification": {
+                "nino": "JS123456A"
+              }
+            }
+          }
+        ],
+        "protectors": {
+          "protectorCompany": [
+            {
+              "lineNo": "1",
+              "bpMatchStatus": "01",
+              "entityStart": "2019-02-28",
+              "name": "1234567890 QwErTyUiOp ,.(/)&'- name",
+              "identification": {
+                "address": {
+                  "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                  "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                  "line3": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                  "country": "DE"
+                }
+              }
+            }
+          ]
+        },
+        "settlors": {
+          "settlorCompany": [
+            {
+              "lineNo": "1",
+              "bpMatchStatus": "01",
+              "entityStart": "2019-02-28",
+              "name": "1234567890 QwErTyUiOp ,.(/)&'- name",
+              "identification": {
+                "address": {
+                  "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                  "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                  "line3": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                  "line4": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                  "postCode": "Z99 2YY",
+                  "country": "GB"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "assets": {
+        "propertyOrLand": [
+          {
+            "buildingLandName": "1234567890&`'^ -QWERTYqwertyzxcvbnmasdfghjklpoiuypoiuytr",
+            "valueFull": 999999999999,
+            "valuePrevious": 999999999999
+          }
+        ]
+      }
+    }
+  },
+    "submissionDate": "2020-09-01"
+  }
+}

@@ -27,7 +27,7 @@ class ValidationServiceSpec extends SpecBase {
 
   "ValidationService " should {
     "return success validation for valid json" in {
-      val jsonString = JsonUtils.jsonFromFile("/resources/2000000000.json").toString()
+      val jsonString = JsonUtils.jsonFromFile("/resources/4mld/2000000000.json").toString()
       val validationResult = displayValidator.validateAgainstSchema(jsonString)
       validationResult mustBe SuccessfulValidation
     }

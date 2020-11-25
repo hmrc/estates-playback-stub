@@ -1,0 +1,136 @@
+{
+  "responseHeader": {
+    "dfmcaReturnUserStatus": "Processed",
+    "formBundleNo": "000123456789"
+  },
+  "trustOrEstateDisplay": {
+    "applicationType": "01",
+    "matchData": {
+      "utr": "1000000010"
+    },
+    "correspondence": {
+      "abroadIndicator": false,
+      "name": "1234567890 QwErTyUiOp ,.(/)&'- name",
+      "address": {
+        "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "line3": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "line4": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "postCode": "NE98 1YX",
+        "country": "GB"
+      },
+      "phoneNumber": "+123456789012345678"
+    },
+    "declaration": {
+      "name": {
+        "firstName": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "lastName": "1234567890 QwErTyUiOp ,.(/)&'- name"
+      },
+      "address": {
+        "line1": "DECLARED WITH NINO",
+        "line2": "DECLARED WITH NINO",
+        "postCode": "XX1 1XX",
+        "country": "GB"
+      }
+    },
+    "details": {
+      "trust": {
+        "details": {
+          "startDate": "2016-04-06",
+          "administrationCountry": "GB",
+          "residentialStatus": {
+            "uk": {
+              "scottishLaw": false
+            }
+          },
+          "typeOfTrust": "Employment Related",
+          "efrbsStartDate": "2016-04-06",
+          "trustUKResident": true
+        },
+        "entities": {
+          "beneficiary": {
+            "individualDetails": [
+              {
+                "lineNo": "1",
+                "bpMatchStatus": "01",
+                "entityStart": "2019-02-28",
+                "name": {
+                  "firstName": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                  "lastName": "1234567890 QwErTyUiOp ,.(/)&'- name"
+                },
+                "dateOfBirth": "2015-03-20",
+                "vulnerableBeneficiary": true,
+                "beneficiaryType": "Director",
+                "beneficiaryShareOfIncome": "99",
+                "identification": {
+                  "nino": "AA000001A"
+                }
+              }
+            ]
+          },
+          "leadTrustees": {
+              "lineNo": "1",
+              "bpMatchStatus": "01",
+              "entityStart": "2019-02-28",
+              "name": {
+                "firstName": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                "lastName": "1234567890 QwErTyUiOp ,.(/)&'- name"
+              },
+              "dateOfBirth": "2015-03-20",
+              "identification": {
+                "nino": "AA000002A"
+              },
+              "phoneNumber": "+123456789012345678"
+          },
+          "trustees": [
+            {
+              "trusteeInd": {
+                "lineNo": "1",
+                "bpMatchStatus": "01",
+                "entityStart": "2019-02-28",
+                "name": {
+                  "firstName": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                  "lastName": "1234567890 QwErTyUiOp ,.(/)&'- name"
+                },
+                "dateOfBirth": "1983-09-24",
+                "identification": {
+                  "nino": "JS123456A"
+                }
+              }
+            }
+          ],
+          "settlors": {
+            "settlorCompany": [
+              {
+                "lineNo": "1",
+                "bpMatchStatus": "01",
+                "entityStart": "2019-02-28",
+                "name": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                "companyType": "Trading",
+                "companyTime": true,
+                "identification": {
+                  "utr": "1234567890"
+                }
+              }
+            ]
+          }
+        },
+        "assets": {
+          "propertyOrLand": [
+            {
+              "address": {
+                "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                "line3": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                "country": "DE"
+              },
+              "buildingLandName": "1234567890&`'^ -QWERTYqwertyzxcvbnmasdfghjklpoiuypoiuytr",
+              "valueFull": 999999999999,
+              "valuePrevious": 999999999999
+            }
+          ]
+        }
+      }
+    }
+  }
+}

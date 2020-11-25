@@ -24,7 +24,7 @@ import play.api.test.FakeRequest
 import play.api.test.Helpers._
 import service.ValidationService
 
-class StubControllerSpec extends SpecBase {
+class Stub4mldControllerSpec extends SpecBase {
 
   private implicit val cc: ControllerComponents = app.injector.instanceOf[ControllerComponents]
   private val headerValidatorAction: HeaderValidatorAction = app.injector.instanceOf[HeaderValidatorAction]
@@ -32,9 +32,9 @@ class StubControllerSpec extends SpecBase {
   private val displayTrustsSchema = "/resources/schemas/display-trust-or-estate-4.1.0.json"
   private val displayValidator = new ValidationService().get(displayTrustsSchema)
 
-  val SUT = new StubController(headerValidatorAction)
+  val SUT = new Stub4mldController(headerValidatorAction)
 
-  "StubController getTrusts " should {
+  "Stub4mldController getTrusts " should {
 
     "return OK with valid processed payload for 2000000000" in {
       testProcessedEstate("2000000000")

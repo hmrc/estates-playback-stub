@@ -1,0 +1,201 @@
+{
+  "responseHeader": {
+    "dfmcaReturnUserStatus": "Processed",
+    "formBundleNo": "000001234567"
+  },
+  "trustOrEstateDisplay": {
+    "applicationType": "01",
+    "matchData": {
+      "utr": "1000000007"
+    },
+    "correspondence": {
+      "abroadIndicator": true,
+      "name": "1234567890 QwErTyUiOp ,.(/)&'- name",
+      "address": {
+        "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "line3": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "country": "DE"
+      },
+      "phoneNumber": "+123456789012345678",
+      "welsh": false,
+      "braille": false
+    },
+    "declaration": {
+      "name": {
+        "firstName": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "lastName": "1234567890 QwErTyUiOp ,.(/)&'- name"
+      },
+      "address": {
+        "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "line3": "1234567890 QwErTyUiOp ,.(/)&'- name",
+        "country": "DE"
+      }
+    },
+    "details": {
+      "trust": {
+        "details": {
+          "startDate": "2016-04-06",
+          "trustTaxable": true,
+          "expressTrust": false,
+          "trustRecorded": false,
+          "trustUKRelation": false,
+          "trustUKResident": false,
+          "trustUKProperty": true,
+          "lawCountry": "DE",
+          "administrationCountry": "GB",
+          "residentialStatus": {
+            "uk": {
+              "scottishLaw": true,
+              "preOffShore": "DE"
+            }
+          },
+          "typeOfTrust": "Flat Management Company or Sinking Fund"
+        },
+        "entities": {
+          "beneficiary": {
+            "other": [
+              {
+                "lineNo": "1",
+                "bpMatchStatus": "01",
+                "entityStart": "2019-02-28",
+                "description": "1234567890&`'^ -QWERTYqwertyzxcvbnmasdfghjklpoiuypoiuytr",
+                "address": {
+                  "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                  "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                  "line3": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                  "country": "DE"
+                },
+                "beneficiaryDiscretion": false,
+                "beneficiaryShareOfIncome": "100",
+                "countryOfResidence": "FR"
+              }
+            ],
+            "trust": [
+              {
+                "lineNo": "1",
+                "bpMatchStatus": "01",
+                "entityStart": "2019-02-28",
+                "organisationName": "Trust Beneficiary 1",
+                "identification": {
+                  "address": {
+                    "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                    "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                    "line3": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                    "country": "DE"
+                  },
+                  "safeId": "XH0000100152371"
+                },
+                "beneficiaryDiscretion": false,
+                "beneficiaryShareOfIncome": "100",
+                "countryOfResidence": "FR"
+              },
+              {
+                "lineNo": "2",
+                "bpMatchStatus": "01",
+                "entityStart": "2019-02-28",
+                "organisationName": "Trust Beneficiary 2",
+                "identification": {
+                  "utr": "1111111111"
+                },
+                "beneficiaryDiscretion": false,
+                "beneficiaryShareOfIncome": "100",
+                "countryOfResidence": "DE"
+              }
+            ]
+          },
+          "leadTrustees": {
+            "lineNo": "1",
+            "bpMatchStatus": "01",
+            "entityStart": "2019-02-28",
+            "name": "1234567890 QwErTyUiOp ,.(/)&'- name",
+            "phoneNumber": "0123456789012345678",
+            "email": "a@b.com",
+            "identification": {
+              "address": {
+                "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                "line3": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                "line4": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                "postCode": "SR2 7UY",
+                "country": "GB"
+              },
+              "safeId": "XH0000100152371"
+            },
+            "countryOfResidence": "DE"
+          },
+          "trustees": [
+            {
+              "trusteeOrg": {
+                "lineNo": "1",
+                "bpMatchStatus": "01",
+                "entityStart": "2019-02-28",
+                "name": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                "identification": {
+                  "address": {
+                    "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                    "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                    "line3": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                    "country": "DE"
+                  },
+                  "safeId": "XH0000100152371"
+                },
+                "countryOfResidence": "DE"
+              }
+            }
+          ],
+          "protectors": {
+            "protectorCompany": [
+              {
+                "lineNo": "1",
+                "bpMatchStatus": "01",
+                "entityStart": "2019-02-28",
+                "name": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                "identification": {
+                  "address": {
+                    "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                    "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                    "line3": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                    "line4": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                    "postCode": "Z99 2YY",
+                    "country": "GB"
+                  },
+                  "safeId": "XH0000100152371"
+                },
+                "countryOfResidence": "FR"
+              }
+            ]
+          },
+          "settlors": {
+            "settlorCompany": [
+              {
+                "lineNo": "1",
+                "bpMatchStatus": "01",
+                "entityStart": "2019-02-28",
+                "name": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                "identification": {
+                  "address": {
+                    "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                    "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                    "line3": "1234567890 QwErTyUiOp ,.(/)&'- name",
+                    "country": "DE"
+                  }
+                },
+                "countryOfResidence": "FR"
+              }
+            ]
+          }
+        },
+        "assets": {
+          "monetary": [
+            {
+              "assetMonetaryAmount": 999999999
+            }
+          ]
+        }
+      }
+    },
+    "submissionDate": "2020-01-01"
+  }
+}
