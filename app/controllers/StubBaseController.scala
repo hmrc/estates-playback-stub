@@ -27,7 +27,6 @@ class StubBaseController @Inject()()(implicit cc: ControllerComponents)
   extends BackendController(cc) with HeaderValidator {
 
   private val utrRegex = "^[0-9]{10}$".r
-  private val urnRegex = "^[0-9A-Z]{15}$".r
 
   def json4mldResult(utr: String)(implicit request: Request[AnyContent]): Future[Result] =
     jsonResult(s"4mld/$utr")
@@ -47,5 +46,5 @@ class StubBaseController @Inject()()(implicit cc: ControllerComponents)
   }
 
   def is5mldIdValid(id: String): Boolean =
-    utrRegex.findFirstIn(id).isDefined || urnRegex.findFirstIn(id).isDefined
+    utrRegex.findFirstIn(id).isDefined
 }
