@@ -1,25 +1,23 @@
 {
   "responseHeader": {
     "dfmcaReturnUserStatus": "Processed",
-    "formBundleNo": "100000000003"
+    "formBundleNo": "100000000001"
   },
   "trustOrEstateDisplay": {
     "applicationType": "02",
     "matchData": {
-      "utr": "2500000003"
+      "utr": "2500000000"
     },
     "correspondence": {
       "abroadIndicator": false,
-      "name": "Estates 04",
+      "name": "Estates 02",
       "address": {
         "line1": "Address line 1",
-        "line2": "Address line 2",
-        "line3": "Address line 3",
-        "line4": "Town or city",
+        "line2": "Town or city",
         "postCode": "Z99 2YY",
         "country": "GB"
       },
-      "phoneNumber": "07523456756",
+      "phoneNumber": "+123456789012345678",
       "welsh": false,
       "braille": false
     },
@@ -27,7 +25,7 @@
       "name": {
         "firstName": "Alister",
         "middleName": "Stuart",
-        "lastName": "McGovern"
+        "lastName": "Mc'Govern"
       },
       "address": {
         "line1": "Address line 1",
@@ -47,27 +45,13 @@
             "entityStart": "2017-02-28",
             "name": {
               "firstName": "Alister",
-              "middleName": "Stuart",
               "lastName": "McGovern"
             },
-            "dateOfBirth": "1983-09-24",
+            "dateOfBirth": "1980-06-01",
             "identification": {
-              "passport": {
-                "number": "123456789",
-                "expirationDate": "2027-03-20",
-                "countryOfIssue": "ES"
-              },
-              "address": {
-                "line1": "Address line 1",
-                "line2": "Address line 2",
-                "line3": "Address line 3",
-                "line4": "Town or city",
-                "postCode": "Z99 2YY",
-                "country": "GB"
-              }
+              "nino": "JS123456A"
             },
-            "phoneNumber": "078888888",
-            "email": "test@abc.com"
+            "phoneNumber": "078888888"
           },
           "deceased": {
             "lineNo": "1",
@@ -75,24 +59,16 @@
             "entityStart": "2017-02-28",
             "name": {
               "firstName": "Wilbert",
-              "middleName": "Charles",
               "lastName": "Jefferies"
             },
-            "dateOfBirth": "1980-06-01",
-            "dateOfDeath": "2017-04-06",
+            "dateOfDeath": "2016-04-06",
             "identification": {
-              "address": {
-                "line1": "Address line 1",
-                "line2": "Address line 2",
-                "line3": "Address line 3",
-                "line4": "Town or city",
-                "postCode": "Z99 2YY",
-                "country": "GB"
-              }
+              "nino": "JS123456A"
             }
           }
         },
-        "periodTaxDues": "03"
+        "administrationEndDate": "2017-06-01",
+        "periodTaxDues": "01"
       }
     },
     "submissionDate": "2020-11-26"

@@ -32,7 +32,10 @@ class Stub5mldController @Inject()(headerValidatorAction: HeaderValidatorAction)
     if(is5mldIdValid(id)) {
       id match {
         // 5mld taxable estates
-        case "2500000001" | "2500000002" | "2500000003" | "2500000007" | "2500000008" | "2500000101" | "2500000102" | "2500000011" =>
+        case "2500000000" | "2500000001" | "2500000002" | "2500000003" | "2500000004" | "2500000007" | "2500000101" | "2500000102" | "2500000011" =>
+          json5mldResult(id)
+        // 5mld estate failed claim feature
+        case "2500000005" =>
           json5mldResult(id)
         // 4MLD taxable estate registered, first time played back under 5MLD. User needs to answer additional questions
         case "2500000010" =>

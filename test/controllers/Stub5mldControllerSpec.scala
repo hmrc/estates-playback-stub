@@ -33,6 +33,10 @@ class Stub5mldControllerSpec extends SpecBase {
 
   "Stub5mldController getEstate" should {
 
+    "return 200 with a valid response payload for a taxable estate with UTR 2500000000" in {
+      val result = getEstateForUtr("2500000000")
+      status(result) must be(OK)
+    }
 
     "return 200 with a valid response payload for a taxable estate with UTR 2500000001" in {
       val result = getEstateForUtr("2500000001")
@@ -49,6 +53,16 @@ class Stub5mldControllerSpec extends SpecBase {
       status(result) must be(OK)
     }
 
+    "return 200 with a valid response payload for estate with UTR 2500000004" in {
+      val result = getEstateForUtr("2500000004")
+      status(result) must be(OK)
+    }
+
+    "return 200 with a valid response payload for estate with UTR 2500000005" in {
+      val result = getEstateForUtr("2500000005")
+      status(result) must be(OK)
+    }
+
     "return 200 with a valid response payload for estate with UTR 2500000007" in {
       val result = getEstateForUtr("2500000007")
       status(result) must be(OK)
@@ -56,11 +70,6 @@ class Stub5mldControllerSpec extends SpecBase {
 
     "return 200 with a valid response payload for estate with UTR 2500000010" in {
       val result = getEstateForUtr("2500000010")
-      status(result) must be(OK)
-    }
-
-    "return 200 with a valid response payload for estate with UTR 2500000008" in {
-      val result = getEstateForUtr("2500000008")
       status(result) must be(OK)
     }
 
