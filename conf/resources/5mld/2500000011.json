@@ -4,7 +4,7 @@
     "formBundleNo": "000123456789"
   },
   "trustOrEstateDisplay": {
-    "applicationType": "01",
+    "applicationType": "02",
     "matchData": {
       "utr": "2500000011"
     },

@@ -1,32 +1,37 @@
 {
+  "responseHeader": {
+    "dfmcaReturnUserStatus": "Processed",
+    "formBundleNo": "100000000001"
+  },
   "trustOrEstateDisplay": {
-    "applicationType": "01",
+    "applicationType": "02",
     "matchData": {
       "utr": "2500000001"
     },
     "correspondence": {
-      "abroadIndicator": false,
-      "name": "1234567890 QwErTyUiOp ,.(/)&'- name",
+      "abroadIndicator": true,
+      "name": "Estates 02",
       "address": {
-        "line1": "1234567890 QwErTyUiOp ,.(/)&'- name",
-        "line2": "1234567890 QwErTyUiOp ,.(/)&'- name",
-        "postCode": "SR2 7UY",
-        "country": "GB"
+        "line1": "International address line 1",
+        "line2": "International address line 2",
+        "line3": "International address line 3",
+        "country": "ES"
       },
-      "phoneNumber": "+123456789012345678",
+      "phoneNumber": "07523456756",
       "welsh": false,
       "braille": false
     },
     "declaration": {
       "name": {
-      "firstName": "1234567890 QwErTyUiOp ,.(\/)&'- name",
-      "lastName": "1234567890 QwErTyUiOp ,.(\/)&'- name"
-    },
+        "firstName": "Alister",
+        "middleName": "Stuart",
+        "lastName": "McGovern"
+      },
       "address": {
-        "line1": "DECLARED WITH NINO",
-        "line2": "DECLARED WITH NINO",
-        "postCode": "XX1 1XX",
-        "country": "GB"
+        "line1": "International address line 1",
+        "line2": "International address line 2",
+        "line3": "International address line 3",
+        "country": "ES"
       }
     },
     "details": {
@@ -36,41 +41,58 @@
             "lineNo": "1",
             "bpMatchStatus": "01",
             "entityStart": "2017-02-28",
-            "orgName": "1234567890 QwErTyUiOp ,.(/)&'- name",
+            "name": {
+              "firstName": "Alister",
+              "middleName": "Stuart",
+              "lastName": "McGovern"
+            },
+            "dateOfBirth": "1983-09-24",
             "identification": {
+              "passport": {
+                "number": "123456789",
+                "expirationDate": "2027-03-20",
+                "countryOfIssue": "ES"
+              },
               "address": {
-                "line1": "Address line 1",
-                "line2": "Address line 2",
-                "line3": "Address line 3",
-                "line4": "Town or city",
-                "postCode": "Z99 2YY",
-                "country": "GB"
+                "line1": "International address line 1",
+                "line2": "International address line 2",
+                "line3": "International address line 3",
+                "country": "ES"
               }
             },
-            "phoneNumber": "078888888"
+            "phoneNumber": "078888888",
+            "email": "test@abc.com"
           },
           "deceased": {
             "lineNo": "1",
             "bpMatchStatus": "01",
-            "entityStart": "2018-02-28",
+            "entityStart": "2017-02-28",
             "name": {
               "firstName": "Wilbert",
               "middleName": "Charles",
               "lastName": "Jefferies"
             },
             "dateOfBirth": "1980-06-01",
-            "dateOfDeath": "2014-04-06",
+            "dateOfDeath": "2015-04-06",
             "identification": {
-              "nino": "JS123456A"
+              "passport": {
+                "number": "KSJDFKSDHF6456545147852369QW26",
+                "expirationDate": "2020-02-02",
+                "countryOfIssue": "DE"
+              },
+              "address": {
+                "line1": "International address line 1",
+                "line2": "International address line 2",
+                "line3": "International address line 3",
+                "country": "ES"
+              }
             }
           }
         },
+        "administrationEndDate": "2017-06-01",
         "periodTaxDues": "01"
       }
-    }
-  },
-  "responseHeader": {
-    "dfmcaReturnUserStatus": "Processed",
-    "formBundleNo": "100000000001"
+    },
+    "submissionDate": "2020-11-26"
   }
 }
