@@ -22,7 +22,7 @@ import play.api.mvc.{ActionBuilder, AnyContent, BodyParsers, Request, Result, Re
 import controllers.HeaderValidator
 import utils.Session
 import uk.gov.hmrc.http.HeaderCarrier
-import uk.gov.hmrc.play.HeaderCarrierConverter
+import uk.gov.hmrc.play.http.HeaderCarrierConverter
 
 import scala.concurrent.{ExecutionContext, Future}
 
@@ -33,7 +33,7 @@ class HeaderValidatorAction @Inject()(
 
   def invokeBlock[A](request: Request[A], block: (Request[A]) => Future[Result]): Future[Result] = {
 
-    val hc: HeaderCarrier = HeaderCarrierConverter.fromHeadersAndSession(request.headers, Some(request.session))
+    val hc: HeaderCarrier = HeaderCarrierConverter.fromRequest(request)
 
     val (envValid, tokeValid) = (isEnvironmentValid(request), isTokenValid(request))
     logger.info(s"[Session ID: ${Session.id(hc)}] isEnvironmentValid: $envValid, isTokenValid: $tokeValid")
