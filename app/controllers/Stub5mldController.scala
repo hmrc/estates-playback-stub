@@ -31,6 +31,10 @@ class Stub5mldController @Inject()(headerValidatorAction: HeaderValidatorAction)
     implicit request =>
     if(is5mldIdValid(id)) {
       id match {
+        case "2000000000" | "2000000001" | "2000000003" | "2000000004" =>
+          json5mldResult(id)
+        case "4000000000" | "4000000001" | "4000000002" | "4000000003" | "4000000004" | "4000000005" | "4000000006" | "4000000007" | "4000000008" | "4000000009" | "4000000010"  =>
+          json5mldResult(id)
         // 5mld taxable estates
         case "2500000000" | "2500000001" | "2500000002" | "2500000003" | "2500000004" | "2500000007" | "2500000101" | "2500000102" | "2500000011" =>
           json5mldResult(id)
