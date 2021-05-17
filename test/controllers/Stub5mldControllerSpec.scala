@@ -33,6 +33,82 @@ class Stub5mldControllerSpec extends SpecBase {
 
   "Stub5mldController getEstate" should {
 
+    "return 200 with a valid response payload for a taxable estate with UTR 2000000000" in {
+      val result = getEstateForUtr("2000000000")
+      status(result) must be(OK)
+    }
+
+    "return 200 with a valid response payload for a taxable estate with UTR 2000000001" in {
+      val result = getEstateForUtr("2000000001")
+      status(result) must be(OK)
+    }
+
+    "return 200 with a valid response payload for a taxable estate with UTR 2000000003" in {
+      val result = getEstateForUtr("2000000003")
+      status(result) must be(OK)
+    }
+
+    "return 200 with a valid response payload for a taxable estate with UTR 2000000004" in {
+      val result = getEstateForUtr("2000000004")
+      status(result) must be(OK)
+    }
+
+    "return 200 with a valid response payload for a taxable estate with UTR 4000000000" in {
+      val result = getEstateForUtr("4000000000")
+      status(result) must be(OK)
+    }
+
+    "return 200 with a valid response payload for a taxable estate with UTR 4000000001" in {
+      val result = getEstateForUtr("4000000001")
+      status(result) must be(OK)
+    }
+
+    "return 200 with a valid response payload for a taxable estate with UTR 4000000002" in {
+      val result = getEstateForUtr("4000000002")
+      status(result) must be(OK)
+    }
+
+    "return 200 with a valid response payload for a taxable estate with UTR 4000000003" in {
+      val result = getEstateForUtr("4000000003")
+      status(result) must be(OK)
+    }
+
+    "return 200 with a valid response payload for a taxable estate with UTR 4000000004" in {
+      val result = getEstateForUtr("4000000004")
+      status(result) must be(OK)
+    }
+
+    "return 200 with a valid response payload for a taxable estate with UTR 4000000005" in {
+      val result = getEstateForUtr("4000000005")
+      status(result) must be(OK)
+    }
+
+    "return 200 with a valid response payload for a taxable estate with UTR 4000000006" in {
+      val result = getEstateForUtr("4000000006")
+      status(result) must be(OK)
+    }
+
+    "return 200 with a valid response payload for a taxable estate with UTR 4000000007" in {
+      val result = getEstateForUtr("4000000007")
+      status(result) must be(OK)
+    }
+
+    "return 200 with a valid response payload for a taxable estate with UTR 4000000008" in {
+      val result = getEstateForUtr("4000000008")
+      status(result) must be(OK)
+    }
+
+    "return 200 with a valid response payload for a taxable estate with UTR 4000000009" in {
+      val result = getEstateForUtr("4000000009")
+      status(result) must be(OK)
+    }
+
+    "return 200 with a valid response payload for a taxable estate with UTR 4000000010" in {
+      val result = getEstateForUtr("4000000010")
+      status(result) must be(OK)
+    }
+
+
     "return 200 with a valid response payload for a taxable estate with UTR 2500000000" in {
       val result = getEstateForUtr("2500000000")
       status(result) must be(OK)
