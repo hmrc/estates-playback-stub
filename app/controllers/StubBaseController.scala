@@ -38,10 +38,6 @@ class StubBaseController @Inject()()(implicit cc: ControllerComponents)
         map((CORRELATION_ID_HEADER, _)).toSeq: _*))
   }
 
-  def isUtrValid(utr:String): Boolean = {
-    utrRegex.findFirstIn(utr).isDefined
-  }
-
   def is5mldIdValid(id: String): Boolean =
     utrRegex.findFirstIn(id).isDefined
 }
