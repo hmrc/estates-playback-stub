@@ -16,6 +16,7 @@
 
 package controllers
 
+import play.api.test.FakeRequest
 import play.api.test.Helpers._
 
 class Stub5mldControllerSpec extends SpecBase {
@@ -30,6 +31,42 @@ class Stub5mldControllerSpec extends SpecBase {
   }
 
   "Stub5mldController getEstate" should {
+
+    "return FORBIDDEN with no headers" in {
+      val utr = "2000000000"
+      val request = FakeRequest("GET", s"/trusts/registration/$utr")
+
+      val result = SUT.getEstate(utr).apply(request)
+      status(result) must be(FORBIDDEN)
+    }
+
+    "return FORBIDDEN with only a Token header" in {
+      val utr = "2000000000"
+      val request = FakeRequest("GET", s"/trusts/registration/$utr")
+        .withHeaders((TOKEN_HEADER, "Bearer 11"))
+
+      val result = SUT.getEstate(utr).apply(request)
+      status(result) must be(FORBIDDEN)
+    }
+
+    "return UNAUTHORIZED with no Token header" in {
+      val utr = "2000000000"
+      val request = FakeRequest("GET", s"/trusts/registration/$utr")
+        .withHeaders((ENVIRONMENT_HEADER, "dev"))
+
+      val result = SUT.getEstate(utr).apply(request)
+      status(result) must be(UNAUTHORIZED)
+    }
+
+    "return FORBIDDEN with no correlation ID" in {
+      val utr = "2000000000"
+      val request = FakeRequest("GET", s"/trusts/registration/$utr")
+        .withHeaders((ENVIRONMENT_HEADER, "dev"),
+          (TOKEN_HEADER, "Bearer 11"))
+
+      val result = SUT.getEstate(utr).apply(request)
+      status(result) must be(FORBIDDEN)
+    }
 
     "return 200 with a valid response payload for a taxable estate with UTR 2000000000" in {
       val result = getEstateForUtr("2000000000")
