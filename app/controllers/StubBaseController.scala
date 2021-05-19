@@ -28,9 +28,6 @@ class StubBaseController @Inject()()(implicit cc: ControllerComponents)
 
   private val utrRegex = "^[0-9]{10}$".r
 
-  def json4mldResult(utr: String)(implicit request: Request[AnyContent]): Future[Result] =
-    jsonResult(s"4mld/$utr")
-
   def json5mldResult(id: String)(implicit request: Request[AnyContent]): Future[Result] =
     jsonResult(s"5mld/$id")
 
@@ -39,10 +36,6 @@ class StubBaseController @Inject()()(implicit cc: ControllerComponents)
     Future.successful(Ok(jsonFromFile(path)).
       withHeaders(request.headers.get(CORRELATION_ID_HEADER).
         map((CORRELATION_ID_HEADER, _)).toSeq: _*))
-  }
-
-  def isUtrValid(utr:String): Boolean = {
-    utrRegex.findFirstIn(utr).isDefined
   }
 
   def is5mldIdValid(id: String): Boolean =

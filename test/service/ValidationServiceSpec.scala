@@ -25,16 +25,11 @@ class ValidationServiceSpec extends SpecBase {
   private val displayValidator5mld = new ValidationService().get(
     "/resources/schemas/5mld/display-trust-or-estate-4.1.0.json"
   )
-
-  private val displayValidator4mld = new ValidationService().get(
-    "/resources/schemas/4mld/display-estates-3.0.json"
-  )
-  
   
   "ValidationService " should {
-    "return success validation for valid 4mld json utr 2000000000" in {
-      val jsonString = JsonUtils.jsonFromFile(get4mldPath("2000000000")).toString()
-      val validationResult = displayValidator4mld.validateAgainstSchema(jsonString)
+    "return success validation for valid 5mld json utr 2000000000" in {
+      val jsonString = JsonUtils.jsonFromFile(get5mldPath("2000000000")).toString()
+      val validationResult = displayValidator5mld.validateAgainstSchema(jsonString)
       validationResult mustBe SuccessfulValidation
     }
 
@@ -121,10 +116,6 @@ class ValidationServiceSpec extends SpecBase {
       result.message mustBe "Invalid Json"
     }
 
-  }
-
-  private def get4mldPath(utr: String): String = {
-    s"/resources/4mld/$utr.json"
   }
 
   private def get5mldPath(utr: String): String = {

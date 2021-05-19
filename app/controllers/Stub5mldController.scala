@@ -31,7 +31,7 @@ class Stub5mldController @Inject()(headerValidatorAction: HeaderValidatorAction)
     implicit request =>
     if(is5mldIdValid(id)) {
       id match {
-        case "2000000000" | "2000000001" | "2000000003" | "2000000004" =>
+        case "2000000000" | "2000000001" | "2000000002" | "2000000003" | "2000000004" =>
           json5mldResult(id)
         case "4000000000" | "4000000001" | "4000000002" | "4000000003" | "4000000004" | "4000000005" | "4000000006" | "4000000007" | "4000000008" | "4000000009" | "4000000010"  =>
           json5mldResult(id)
@@ -50,6 +50,8 @@ class Stub5mldController @Inject()(headerValidatorAction: HeaderValidatorAction)
         // Parked, Obsoleted and Suspended
         case "1111111114" | "1111111115" | "1111111116" =>
           jsonResult(id)
+        case "5000000000" => json5mldResult(id)  // Suspended
+        case "5000000001" => json5mldResult(id)  // Fail tax enrolments
         case "0000000500" =>
           Future.successful(InternalServerError(jsonResponse500))
         case "0000000503" =>

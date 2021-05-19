@@ -16,7 +16,7 @@
 
 package controllers
 
-import play.api.libs.json.JsObject
+import play.api.test.FakeRequest
 import play.api.test.Helpers._
 
 class Stub5mldControllerSpec extends SpecBase {
@@ -24,7 +24,6 @@ class Stub5mldControllerSpec extends SpecBase {
   private val SUT = app.injector.instanceOf[Stub5mldController]
 
   private def createRequestForUtr(utr: String) = createGetRequestWithValidHeaders(s"/trusts/registration/UTR/$utr")
-  private def createRequestForUrn(urn: String) = createGetRequestWithValidHeaders(s"/trusts/registration/URN/$urn")
 
   private def getEstateForUtr(utr: String) = {
     val request = createRequestForUtr(utr)
@@ -33,6 +32,42 @@ class Stub5mldControllerSpec extends SpecBase {
 
   "Stub5mldController getEstate" should {
 
+    "return FORBIDDEN with no headers" in {
+      val utr = "2000000000"
+      val request = FakeRequest("GET", s"/trusts/registration/$utr")
+
+      val result = SUT.getEstate(utr).apply(request)
+      status(result) must be(FORBIDDEN)
+    }
+
+    "return FORBIDDEN with only a Token header" in {
+      val utr = "2000000000"
+      val request = FakeRequest("GET", s"/trusts/registration/$utr")
+        .withHeaders((TOKEN_HEADER, "Bearer 11"))
+
+      val result = SUT.getEstate(utr).apply(request)
+      status(result) must be(FORBIDDEN)
+    }
+
+    "return UNAUTHORIZED with no Token header" in {
+      val utr = "2000000000"
+      val request = FakeRequest("GET", s"/trusts/registration/$utr")
+        .withHeaders((ENVIRONMENT_HEADER, "dev"))
+
+      val result = SUT.getEstate(utr).apply(request)
+      status(result) must be(UNAUTHORIZED)
+    }
+
+    "return FORBIDDEN with no correlation ID" in {
+      val utr = "2000000000"
+      val request = FakeRequest("GET", s"/trusts/registration/$utr")
+        .withHeaders((ENVIRONMENT_HEADER, "dev"),
+          (TOKEN_HEADER, "Bearer 11"))
+
+      val result = SUT.getEstate(utr).apply(request)
+      status(result) must be(FORBIDDEN)
+    }
+
     "return 200 with a valid response payload for a taxable estate with UTR 2000000000" in {
       val result = getEstateForUtr("2000000000")
       status(result) must be(OK)
@@ -40,6 +75,11 @@ class Stub5mldControllerSpec extends SpecBase {
 
     "return 200 with a valid response payload for a taxable estate with UTR 2000000001" in {
       val result = getEstateForUtr("2000000001")
+      status(result) must be(OK)
+    }
+
+    "return 200 with a valid response payload for a taxable estate with UTR 2000000002" in {
+      val result = getEstateForUtr("2000000002")
       status(result) must be(OK)
     }
 
@@ -105,6 +145,16 @@ class Stub5mldControllerSpec extends SpecBase {
 
     "return 200 with a valid response payload for a taxable estate with UTR 4000000010" in {
       val result = getEstateForUtr("4000000010")
+      status(result) must be(OK)
+    }
+
+    "return OK with valid processed payload for 5000000000" in {
+      val result = getEstateForUtr("5000000000")
+      status(result) must be(OK)
+    }
+
+    "return OK with valid processed payload for 5000000001" in {
+      val result = getEstateForUtr("5000000001")
       status(result) must be(OK)
     }
 
