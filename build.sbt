@@ -1,12 +1,11 @@
-import uk.gov.hmrc.DefaultBuildSettings.integrationTestSettings
-import uk.gov.hmrc.SbtArtifactory
 import scoverage.ScoverageKeys
+import uk.gov.hmrc.DefaultBuildSettings.integrationTestSettings
 import uk.gov.hmrc.sbtdistributables.SbtDistributablesPlugin.publishingSettings
 
 val appName = "estates-playback-stub"
 
 lazy val microservice = Project(appName, file("."))
-  .enablePlugins(play.sbt.PlayScala, SbtAutoBuildPlugin, SbtGitVersioning, SbtDistributablesPlugin, SbtArtifactory)
+  .enablePlugins(PlayScala, SbtDistributablesPlugin)
   .disablePlugins(JUnitXmlReportPlugin) //Required to prevent https://github.com/scalatest/scalatest/issues/1427
   .settings(
     PlayKeys.playDefaultPort := 8833,
