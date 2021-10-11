@@ -4,15 +4,33 @@ import uk.gov.hmrc.sbtdistributables.SbtDistributablesPlugin.publishingSettings
 
 val appName = "estates-playback-stub"
 
+val excludedPackages = Seq(
+  "<empty>",
+  ".*Reverse.*",
+  ".*Routes.*",
+  ".*standardError*.*",
+  ".*main_template*.*",
+  "uk.gov.hmrc.BuildInfo",
+  "app.*",
+  "prod.*",
+  "config.*",
+  "testOnlyDoNotUseInAppConf.*",
+  "views.html.*",
+  "testOnly.*",
+  "com.kenshoo.play.metrics*.*",
+  ".*LocalDateService.*",
+  ".*LocalDateTimeService.*",
+  ".*RichJsValue.*",
+  ".*Repository.*"
+)
+
 lazy val microservice = Project(appName, file("."))
   .enablePlugins(PlayScala, SbtDistributablesPlugin)
   .disablePlugins(JUnitXmlReportPlugin) //Required to prevent https://github.com/scalatest/scalatest/issues/1427
   .settings(
     PlayKeys.playDefaultPort := 8833,
-    ScoverageKeys.coverageExcludedFiles := "<empty>;.*config.*;Reverse.*;.*filters.*;.*handlers.*;.*components.*;.*repositories.*;" +
-      ".*BuildInfo.*;.*Routes.*;.*GuiceInjector;" +
-      ".*ControllerConfiguration;.*LanguageSwitchController",
-    ScoverageKeys.coverageMinimum := 98,        // all new JSON files must be unit tested
+    ScoverageKeys.coverageExcludedFiles := excludedPackages.mkString(";"),
+    ScoverageKeys.coverageMinimum := 80,        // all new JSON files must be unit tested
     ScoverageKeys.coverageFailOnMinimum := true,
     ScoverageKeys.coverageHighlighting := true
   )
