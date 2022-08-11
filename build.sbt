@@ -30,12 +30,12 @@ lazy val microservice = Project(appName, file("."))
   .settings(
     PlayKeys.playDefaultPort := 8833,
     ScoverageKeys.coverageExcludedFiles := excludedPackages.mkString(";"),
-    ScoverageKeys.coverageMinimum := 80,        // all new JSON files must be unit tested
+    ScoverageKeys.coverageMinimumStmtTotal := 80,        // all new JSON files must be unit tested
     ScoverageKeys.coverageFailOnMinimum := true,
     ScoverageKeys.coverageHighlighting := true
   )
   .settings(
-    scalaVersion := "2.12.12",
+    scalaVersion := "2.12.16",
     SilencerSettings(),
     majorVersion                     := 0,
     libraryDependencies              ++= AppDependencies.compile ++ AppDependencies.test,

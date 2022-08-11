@@ -4,16 +4,16 @@ import sbt._
 object AppDependencies {
 
   val compile: Seq[ModuleID] = Seq(
-    "uk.gov.hmrc"    %% "bootstrap-backend-play-28" % "5.10.0",
-    "com.github.fge"  % "json-schema-validator"     % "2.2.6"
+    "uk.gov.hmrc"    %% "bootstrap-backend-play-28" % "6.4.0",
+    "com.github.fge" %  "json-schema-validator"     % "2.2.14"
   )
 
   val test: Seq[ModuleID] = Seq(
-    "org.scalatest"           %% "scalatest"          % "3.2.7",
-    "com.typesafe.play"       %% "play-test"          % current,
-    "org.pegdown"             %  "pegdown"            % "1.6.0",
-    "org.scalatestplus.play"  %% "scalatestplus-play" % "5.1.0",
-    "com.vladsch.flexmark"    % "flexmark-all"        % "0.35.10"
+    "org.scalatest"           %% "scalatest"          % "3.2.13" % "test",
+    "com.typesafe.play"       %% "play-test"          % current  % "test",
+    "org.pegdown"             %  "pegdown"            % "1.6.0"  % "test",
+    "org.scalatestplus.play"  %% "scalatestplus-play" % "5.1.0"  % "test",
+    "com.vladsch.flexmark"    %  "flexmark-all"       % "0.62.2" % "test"
   )
 
   val akkaVersion = "2.6.7"
