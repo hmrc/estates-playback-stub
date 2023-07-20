@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ abstract class SpecBase extends PlaySpec with GuiceOneServerPerSuite {
   val TOKEN_HEADER = "Authorization"
   val CORRELATIONID_HEADER = "CorrelationId"
 
-  val CONTENT_TYPE_HEADER = ("Content-type", "application/json")
+  val CONTENT_TYPE_HEADER: (String, String) = ("Content-type", "application/json")
 
 
   def createGetRequestWithValidHeaders(url : String ) :FakeRequest[AnyContentAsEmpty.type ] = {
