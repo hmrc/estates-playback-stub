@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,8 +24,8 @@ import com.github.fge.jsonschema.main.{JsonSchema, JsonSchemaFactory}
 import play.api.Logging
 import models.{DesValidationError, FailedValidation, SuccessfulValidation, ValidationResult}
 
-import scala.collection.JavaConverters._
 import scala.io.Source
+import scala.jdk.CollectionConverters.IterableHasAsScala
 
 class ValidationService () {
 
@@ -75,7 +75,7 @@ class Validator(schema: JsonSchema) extends Logging {
 
 
   private def getValidationErrors(validationOutput: ProcessingReport): Seq[DesValidationError] = {
-    validationOutput.iterator.asScala.toList.filter(m => m.getLogLevel == ERROR).map(m => {
+    validationOutput.asScala.toList.filter(m => m.getLogLevel == ERROR).map(m => {
       val error = m.asJson()
       val message = error.findValue(jsonErrorMessageTag).asText("")
       val location = error.findValue(jsonErrorInstanceTag).at(s"/$jsonErrorPointerTag").asText()

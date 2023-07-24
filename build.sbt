@@ -1,6 +1,4 @@
 import scoverage.ScoverageKeys
-import uk.gov.hmrc.DefaultBuildSettings.integrationTestSettings
-import uk.gov.hmrc.sbtdistributables.SbtDistributablesPlugin.publishingSettings
 
 val appName = "estates-playback-stub"
 
@@ -16,12 +14,7 @@ val excludedPackages = Seq(
   "config.*",
   "testOnlyDoNotUseInAppConf.*",
   "views.html.*",
-  "testOnly.*",
-  "com.kenshoo.play.metrics*.*",
-  ".*LocalDateService.*",
-  ".*LocalDateTimeService.*",
-  ".*RichJsValue.*",
-  ".*Repository.*"
+  "testOnly.*"
 )
 
 lazy val microservice = Project(appName, file("."))
@@ -30,18 +23,18 @@ lazy val microservice = Project(appName, file("."))
   .settings(
     PlayKeys.playDefaultPort := 8833,
     ScoverageKeys.coverageExcludedFiles := excludedPackages.mkString(";"),
-    ScoverageKeys.coverageMinimumStmtTotal := 80,        // all new JSON files must be unit tested
+    ScoverageKeys.coverageMinimumStmtTotal := 98,
     ScoverageKeys.coverageFailOnMinimum := true,
     ScoverageKeys.coverageHighlighting := true
   )
   .settings(
-    scalaVersion := "2.12.16",
-    SilencerSettings(),
+    scalacOptions += "-Wconf:src=routes/.*:s",
+    scalaVersion := "2.13.11",
     majorVersion                     := 0,
     libraryDependencies              ++= AppDependencies.compile ++ AppDependencies.test,
-    dependencyOverrides              ++= AppDependencies.overrides
   )
-  .settings(publishingSettings: _*)
-  .configs(IntegrationTest)
-  .settings(integrationTestSettings(): _*)
-  .settings(resolvers += Resolver.jcenterRepo)
+  // To resolve a bug with version 2.x.x of the scoverage plugin - https://github.com/sbt/sbt/issues/6997
+  // Try to remove when sbt[ 1.8.0+ and scoverage is 2.0.7+
+  .settings(libraryDependencySchemes ++= Seq("org.scala-lang.modules" %% "scala-xml" % VersionScheme.Always))
+
+addCommandAlias("scalastyleAll", "all scalastyle Test/scalastyle")
