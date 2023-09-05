@@ -21,11 +21,11 @@ import models.{FailedValidation, SuccessfulValidation}
 import utils.JsonUtils
 
 class ValidationServiceSpec extends SpecBase {
-  
+
   private val displayValidator5mld = new ValidationService().get(
     "/resources/schemas/5mld/display-trust-or-estate-4.1.0.json"
   )
-  
+
   "ValidationService " should {
     "return success validation for valid 5mld json utr 2000000000" in {
       val jsonString = JsonUtils.jsonFromFile(get5mldPath("2000000000")).toString()
