@@ -112,7 +112,7 @@ class ValidationServiceSpec extends SpecBase {
     "return failed validation for invalid json" in {
       val validationResult = displayValidator5mld.validateAgainstSchema("{}")
       val result = validationResult.asInstanceOf[FailedValidation]
-      result mustNot be(null)
+      result mustNot be(None.orNull)
       result.message mustBe "Invalid Json"
     }
 
