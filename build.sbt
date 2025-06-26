@@ -1,6 +1,6 @@
 import scoverage.ScoverageKeys
 
-ThisBuild / scalaVersion := "2.13.13"
+ThisBuild / scalaVersion := "2.13.16"
 ThisBuild / majorVersion := 0
 
 val appName = "estates-playback-stub"
