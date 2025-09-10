@@ -116,6 +116,13 @@ class ValidationServiceSpec extends SpecBase {
       result.message mustBe "Invalid Json"
     }
 
+    "return test failed validation for invalid json" in {
+      val validationResult = displayValidator5mld.validateAgainstSchema("{}")
+      val result = validationResult.asInstanceOf[FailedValidation]
+      result mustNot be(None.orNull)
+      result.message mustBe "Invalid Json"
+    }
+
   }
 
   private def get5mldPath(utr: String): String = {

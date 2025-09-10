@@ -1,6 +1,5 @@
-import scoverage.ScoverageKeys
 
-ThisBuild / scalaVersion := "2.13.13"
+ThisBuild / scalaVersion := "2.13.16"
 ThisBuild / majorVersion := 0
 
 val appName = "estates-playback-stub"
@@ -15,15 +14,10 @@ lazy val microservice = Project(appName, file("."))
   .disablePlugins(JUnitXmlReportPlugin) //Required to prevent https://github.com/scalatest/scalatest/issues/1427
   .settings(
     PlayKeys.playDefaultPort := 8833,
-    ScoverageKeys.coverageExcludedFiles := excludedPackages.mkString(";"),
-    ScoverageKeys.coverageMinimumStmtTotal := 98,
-    ScoverageKeys.coverageFailOnMinimum := true,
-    ScoverageKeys.coverageHighlighting := true,
+    CodeCoverageSettings(),
     scalacOptions ++= Seq(
       "-feature",
       "-Wconf:src=routes/.*:s"
     ),
     libraryDependencies ++= AppDependencies()
   )
-
-addCommandAlias("scalastyleAll", "all scalastyle Test/scalastyle")
