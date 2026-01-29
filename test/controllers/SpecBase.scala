@@ -21,21 +21,20 @@ import org.scalatestplus.play.guice.GuiceOneServerPerSuite
 import play.api.mvc.AnyContentAsEmpty
 import play.api.test.FakeRequest
 
-
 abstract class SpecBase extends PlaySpec with GuiceOneServerPerSuite {
 
-  val ENVIRONMENT_HEADER = "Environment"
-  val TOKEN_HEADER = "Authorization"
+  val ENVIRONMENT_HEADER   = "Environment"
+  val TOKEN_HEADER         = "Authorization"
   val CORRELATIONID_HEADER = "CorrelationId"
 
   val CONTENT_TYPE_HEADER: (String, String) = ("Content-type", "application/json")
 
-
-  def createGetRequestWithValidHeaders(url : String ) :FakeRequest[AnyContentAsEmpty.type ] = {
+  def createGetRequestWithValidHeaders(url: String): FakeRequest[AnyContentAsEmpty.type] =
     FakeRequest("GET", url)
-      .withHeaders((ENVIRONMENT_HEADER, "dev"),
+      .withHeaders(
+        (ENVIRONMENT_HEADER, "dev"),
         (TOKEN_HEADER, "Bearer 11"),
-        (CORRELATIONID_HEADER, "cd7a4033-ae84-4e18-861d-9d62c6741e87") )
-  }
+        (CORRELATIONID_HEADER, "cd7a4033-ae84-4e18-861d-9d62c6741e87")
+      )
 
 }

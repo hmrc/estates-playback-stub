@@ -22,10 +22,11 @@ import scala.io.Source
 
 object JsonUtils {
 
-   def jsonFromFile(path: String): JsValue = {
+  def jsonFromFile(path: String): JsValue = {
     val resource = Source.fromInputStream(getClass.getResourceAsStream(path))
-    val json = Json.parse(resource.mkString)
+    val json     = Json.parse(resource.mkString)
     resource.close()
     json
   }
+
 }

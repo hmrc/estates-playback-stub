@@ -28,78 +28,77 @@ class ValidationServiceSpec extends SpecBase {
 
   "ValidationService " should {
     "return success validation for valid 5mld json utr 2000000000" in {
-      val jsonString = JsonUtils.jsonFromFile(get5mldPath("2000000000")).toString()
+      val jsonString       = JsonUtils.jsonFromFile(get5mldPath("2000000000")).toString()
       val validationResult = displayValidator5mld.validateAgainstSchema(jsonString)
       validationResult mustBe SuccessfulValidation
     }
 
     "return success validation for valid 5mld json utr 2500000000" in {
-      val jsonString = JsonUtils.jsonFromFile(get5mldPath("2500000000")).toString()
+      val jsonString       = JsonUtils.jsonFromFile(get5mldPath("2500000000")).toString()
       val validationResult = displayValidator5mld.validateAgainstSchema(jsonString)
       validationResult mustBe SuccessfulValidation
     }
 
     "return success validation for valid 5mld json utr 2500000001" in {
-      val jsonString = JsonUtils.jsonFromFile(get5mldPath("2500000001")).toString()
+      val jsonString       = JsonUtils.jsonFromFile(get5mldPath("2500000001")).toString()
       val validationResult = displayValidator5mld.validateAgainstSchema(jsonString)
       validationResult mustBe SuccessfulValidation
     }
 
     "return success validation for valid 5mld json utr 2500000002" in {
-      val jsonString = JsonUtils.jsonFromFile(get5mldPath("2500000002")).toString()
+      val jsonString       = JsonUtils.jsonFromFile(get5mldPath("2500000002")).toString()
       val validationResult = displayValidator5mld.validateAgainstSchema(jsonString)
       validationResult mustBe SuccessfulValidation
     }
 
     "return success validation for valid 5mld json utr 2500000003" in {
-      val jsonString = JsonUtils.jsonFromFile(get5mldPath("2500000003")).toString()
+      val jsonString       = JsonUtils.jsonFromFile(get5mldPath("2500000003")).toString()
       val validationResult = displayValidator5mld.validateAgainstSchema(jsonString)
       validationResult mustBe SuccessfulValidation
     }
 
     "return success validation for valid 5mld json utr 2500000004" in {
-      val jsonString = JsonUtils.jsonFromFile(get5mldPath("2500000004")).toString()
+      val jsonString       = JsonUtils.jsonFromFile(get5mldPath("2500000004")).toString()
       val validationResult = displayValidator5mld.validateAgainstSchema(jsonString)
       validationResult mustBe SuccessfulValidation
     }
 
     "return success validation for valid 5mld json utr 2500000005" in {
-      val jsonString = JsonUtils.jsonFromFile(get5mldPath("2500000005")).toString()
+      val jsonString       = JsonUtils.jsonFromFile(get5mldPath("2500000005")).toString()
       val validationResult = displayValidator5mld.validateAgainstSchema(jsonString)
       validationResult mustBe SuccessfulValidation
     }
 
     "return success validation for valid 5mld json utr 2500000007" in {
-      val jsonString = JsonUtils.jsonFromFile(get5mldPath("2500000007")).toString()
+      val jsonString       = JsonUtils.jsonFromFile(get5mldPath("2500000007")).toString()
       val validationResult = displayValidator5mld.validateAgainstSchema(jsonString)
       validationResult mustBe SuccessfulValidation
     }
 
     "return success validation for valid 5mld json utr 2500000010" in {
-      val jsonString = JsonUtils.jsonFromFile(get5mldPath("2500000010")).toString()
+      val jsonString       = JsonUtils.jsonFromFile(get5mldPath("2500000010")).toString()
       val validationResult = displayValidator5mld.validateAgainstSchema(jsonString)
       validationResult mustBe SuccessfulValidation
     }
 
     "return success validation for valid 5mld json utr 2500000101" in {
-      val jsonString = JsonUtils.jsonFromFile(get5mldPath("2500000101")).toString()
+      val jsonString       = JsonUtils.jsonFromFile(get5mldPath("2500000101")).toString()
       val validationResult = displayValidator5mld.validateAgainstSchema(jsonString)
       validationResult mustBe SuccessfulValidation
     }
 
     "return success validation for valid 5mld json utr 2500000102" in {
-      val jsonString = JsonUtils.jsonFromFile(get5mldPath("2500000102")).toString()
+      val jsonString       = JsonUtils.jsonFromFile(get5mldPath("2500000102")).toString()
       val validationResult = displayValidator5mld.validateAgainstSchema(jsonString)
       validationResult mustBe SuccessfulValidation
     }
-
 
     "return failed validation for not json" in {
       val validationResult = displayValidator5mld.validateAgainstSchema("Fred")
       validationResult mustBe FailedValidation("Not JSON", 0, Nil)
     }
     "return failed validation for duplicate properties" in {
-      val json =
+      val json             =
         """
           |{
           | "field": 1,
@@ -111,14 +110,14 @@ class ValidationServiceSpec extends SpecBase {
     }
     "return failed validation for invalid json" in {
       val validationResult = displayValidator5mld.validateAgainstSchema("{}")
-      val result = validationResult.asInstanceOf[FailedValidation]
+      val result           = validationResult.asInstanceOf[FailedValidation]
       result mustNot be(None.orNull)
       result.message mustBe "Invalid Json"
     }
 
   }
 
-  private def get5mldPath(utr: String): String = {
+  private def get5mldPath(utr: String): String =
     s"/resources/5mld/$utr.json"
-  }
+
 }

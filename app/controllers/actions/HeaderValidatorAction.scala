@@ -26,10 +26,10 @@ import uk.gov.hmrc.play.http.HeaderCarrierConverter
 
 import scala.concurrent.{ExecutionContext, Future}
 
-class HeaderValidatorAction @Inject()(
-                                       override val parser: BodyParsers.Default,
-                                       override val executionContext: ExecutionContext)
-  extends ActionBuilder[Request, AnyContent] with HeaderValidator with Logging {
+class HeaderValidatorAction @Inject() (
+  override val parser: BodyParsers.Default,
+  override val executionContext: ExecutionContext
+) extends ActionBuilder[Request, AnyContent] with HeaderValidator with Logging {
 
   def invokeBlock[A](request: Request[A], block: Request[A] => Future[Result]): Future[Result] = {
 
@@ -39,9 +39,9 @@ class HeaderValidatorAction @Inject()(
     logger.info(s"[Session ID: ${Session.id(hc)}] isEnvironmentValid: $envValid, isTokenValid: $tokeValid")
     (envValid, tokeValid) match {
       case (false, false) => Future.successful(Results.Forbidden)
-      case (false, true) => Future.successful(Results.Forbidden)
-      case (true, false) => Future.successful(Results.Unauthorized)
-      case (true, true) =>
+      case (false, true)  => Future.successful(Results.Forbidden)
+      case (true, false)  => Future.successful(Results.Unauthorized)
+      case (true, true)   =>
         if (isCorrelationIdValid(request)) {
           block(request)
         } else {
@@ -50,6 +50,5 @@ class HeaderValidatorAction @Inject()(
         }
     }
   }
-
 
 }
