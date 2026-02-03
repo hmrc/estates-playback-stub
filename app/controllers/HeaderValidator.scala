@@ -19,11 +19,11 @@ package controllers
 import play.api.mvc.Request
 
 trait HeaderValidator {
-  val CORRELATION_ID_HEADER = "CorrelationId"
-  val ENVIRONMENT_HEADER = "Environment"
-  val TOKEN_HEADER = "Authorization"
-  private val VALID_TOKEN_REGEX = "^(Bearer (.*))$".r
-  private val VALID_ENV_REGEX = "^(dev)$".r
+  val CORRELATION_ID_HEADER              = "CorrelationId"
+  val ENVIRONMENT_HEADER                 = "Environment"
+  val TOKEN_HEADER                       = "Authorization"
+  private val VALID_TOKEN_REGEX          = "^(Bearer (.*))$".r
+  private val VALID_ENV_REGEX            = "^(dev)$".r
   private val VALID_CORRELATION_ID_REGEX = "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$".r
 
   def isEnvironmentValid(request: Request[_]): Boolean = {
@@ -40,4 +40,5 @@ trait HeaderValidator {
     val correlationId = request.headers.get(CORRELATION_ID_HEADER).getOrElse("Invalid")
     VALID_CORRELATION_ID_REGEX.findFirstIn(correlationId).isDefined
   }
+
 }

@@ -1,4 +1,3 @@
-
 ThisBuild / scalaVersion := "2.13.16"
 ThisBuild / majorVersion := 0
 
@@ -11,7 +10,7 @@ val excludedPackages = Seq(
 
 lazy val microservice = Project(appName, file("."))
   .enablePlugins(PlayScala, SbtDistributablesPlugin)
-  .disablePlugins(JUnitXmlReportPlugin) //Required to prevent https://github.com/scalatest/scalatest/issues/1427
+  .disablePlugins(JUnitXmlReportPlugin) // Required to prevent https://github.com/scalatest/scalatest/issues/1427
   .settings(
     PlayKeys.playDefaultPort := 8833,
     CodeCoverageSettings(),
@@ -21,3 +20,5 @@ lazy val microservice = Project(appName, file("."))
     ),
     libraryDependencies ++= AppDependencies()
   )
+
+addCommandAlias("scalafmtAll", "all scalafmtSbt scalafmt Test/scalafmt")
