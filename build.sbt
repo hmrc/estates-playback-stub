@@ -1,14 +1,7 @@
-ThisBuild / scalaVersion := "2.13.16"
-ThisBuild / majorVersion := 0
+ThisBuild / scalaVersion := "3.3.7"
+ThisBuild / majorVersion := 1
 
-val appName = "estates-playback-stub"
-
-val excludedPackages = Seq(
-  "<empty>",
-  ".*Routes.*"
-)
-
-lazy val microservice = Project(appName, file("."))
+lazy val microservice = Project("estates-playback-stub", file("."))
   .enablePlugins(PlayScala, SbtDistributablesPlugin)
   .disablePlugins(JUnitXmlReportPlugin) // Required to prevent https://github.com/scalatest/scalatest/issues/1427
   .settings(
