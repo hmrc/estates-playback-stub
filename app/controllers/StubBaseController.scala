@@ -35,7 +35,7 @@ class StubBaseController @Inject() ()(implicit cc: ControllerComponents)
     val path = s"/resources/$utr.json"
     Future.successful(
       Ok(jsonFromFile(path)).withHeaders(
-        request.headers.get(CORRELATION_ID_HEADER).map((CORRELATION_ID_HEADER, _)).toSeq: _*
+        request.headers.get(CORRELATION_ID_HEADER).map((CORRELATION_ID_HEADER, _)).toSeq*
       )
     )
   }

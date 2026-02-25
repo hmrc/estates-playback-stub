@@ -34,8 +34,9 @@ class ValidationService() {
 
   def get(schemaFile: String): Validator = {
     val source               = Source.fromInputStream(getClass.getResourceAsStream(schemaFile))
-    val schemaJsonFileString = source.mkString
-    source.close()
+    val schemaJsonFileString =
+      try source.mkString
+      finally source.close()
     val schemaJson           = JsonLoader.fromString(schemaJsonFileString)
     val schema               = factory.getJsonSchema(schemaJson)
     new Validator(schema)
@@ -61,14 +62,15 @@ class Validator(schema: JsonSchema) extends Logging {
       } else {
         val validationErrors = getValidationErrors(validationOutput)
         val failedValidation = FailedValidation("Invalid Json", 0, validationErrors)
-        logger.info(s"[validateAgainstSchema] validation errors: ${validationErrors.mkString}")
-        logger.info("[validateAgainstSchema] Failed schema validation")
-        logger.debug(failedValidation.toString)
+        logger.info(s"[Validator][validateAgainstSchema] validation errors: ${validationErrors.mkString}")
+        logger.info(s"[Validator][validateAgainstSchema] Failed schema validation: ${failedValidation.toString}")
         failedValidation
       }
     } catch {
       case ex: Exception =>
-        logger.error(s"[validateAgainstSchema] Error validating Json request against Schema: ${ex.getMessage}")
+        logger.error(
+          s"[Validator][validateAgainstSchema] Error validating Json request against Schema: ${ex.getMessage}"
+        )
         FailedValidation("Not JSON", 0, Nil)
     }
 
@@ -78,7 +80,7 @@ class Validator(schema: JsonSchema) extends Logging {
       val message   = error.findValue(jsonErrorMessageTag).asText("")
       val location  = error.findValue(jsonErrorInstanceTag).at(s"/$jsonErrorPointerTag").asText()
       val locations = error.findValues(jsonErrorInstanceTag)
-      logger.error(s"[getValidationErrors] Failed at locations : $locations")
+      logger.error(s"[Validator][getValidationErrors] Failed at locations : $locations")
       DesValidationError(message, if (location == "") "/" else location)
     }
 

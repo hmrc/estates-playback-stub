@@ -115,6 +115,16 @@ class ValidationServiceSpec extends SpecBase {
       result.message mustBe "Invalid Json"
     }
 
+    "return failed validation with nested error location for invalid enum value" in {
+      val json             =
+        """{"responseHeader": {"dfmcaReturnUserStatus": "InvalidStatus", "formBundleNo": "123456789012"}}"""
+      val validationResult = displayValidator5mld.validateAgainstSchema(json)
+      val result           = validationResult.asInstanceOf[FailedValidation]
+      result.message                        mustBe "Invalid Json"
+      result.validationErrors                 must not be empty
+      result.validationErrors.head.location mustBe "/responseHeader/dfmcaReturnUserStatus"
+    }
+
   }
 
   private def get5mldPath(utr: String): String =

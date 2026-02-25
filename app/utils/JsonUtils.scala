@@ -24,8 +24,9 @@ object JsonUtils {
 
   def jsonFromFile(path: String): JsValue = {
     val resource = Source.fromInputStream(getClass.getResourceAsStream(path))
-    val json     = Json.parse(resource.mkString)
-    resource.close()
+    val json     =
+      try Json.parse(resource.mkString)
+      finally resource.close()
     json
   }
 
