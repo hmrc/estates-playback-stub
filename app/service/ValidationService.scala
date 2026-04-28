@@ -16,48 +16,50 @@
 
 package service
 
-import com.fasterxml.jackson.core.{JsonFactory, JsonParser}
+import com.fasterxml.jackson.core.JsonParser
 import com.fasterxml.jackson.databind.{JsonNode, ObjectMapper}
-import com.github.fge.jackson.JsonLoader
-import com.github.fge.jsonschema.core.report.LogLevel.ERROR
-import com.github.fge.jsonschema.core.report.ProcessingReport
-import com.github.fge.jsonschema.main.{JsonSchema, JsonSchemaFactory}
-import play.api.Logging
+import com.networknt.schema.{Error, InputFormat, Schema, SchemaRegistry, SpecificationVersion}
 import models.{DesValidationError, FailedValidation, SuccessfulValidation, ValidationResult}
+import play.api.Logging
 
+import java.io.InputStream
 import scala.io.Source
 import scala.jdk.CollectionConverters.IterableHasAsScala
 
 class ValidationService() {
 
-  private val factory = JsonSchemaFactory.byDefault()
-
   def get(schemaFile: String): Validator = {
-    val source               = Source.fromInputStream(getClass.getResourceAsStream(schemaFile))
-    val schemaJsonFileString =
-      try source.mkString
-      finally source.close()
-    val schemaJson           = JsonLoader.fromString(schemaJsonFileString)
-    val schema               = factory.getJsonSchema(schemaJson)
+    val resource = resourceAsString(schemaFile)
+      .getOrElse(throw new RuntimeException("Missing schema: " + schemaFile))
+
+    val schema = SchemaRegistry
+      .withDefaultDialect(SpecificationVersion.DRAFT_4)
+      .getSchema(resource)
     new Validator(schema)
   }
 
+  private def resourceAsString(resourcePath: String): Option[String] =
+    resourceAsInputStream(resourcePath) map { is =>
+      Source.fromInputStream(is).getLines().mkString("\n")
+    }
+
+  private def resourceAsInputStream(resourcePath: String): Option[InputStream] =
+    Option(getClass.getResourceAsStream(resourcePath))
+
 }
 
-class Validator(schema: JsonSchema) extends Logging {
+class Validator(schema: Schema) extends Logging {
 
-  private val jsonErrorMessageTag  = "message"
-  private val jsonErrorInstanceTag = "instance"
-  private val jsonErrorPointerTag  = "pointer"
+  private def validateInternal(subject: String): List[Error] =
+    schema.validate(subject, InputFormat.JSON).asScala.toList
 
   def validateAgainstSchema(input: String): ValidationResult =
 
     try {
-      val json: JsonNode = doNotAllowDuplicatedProperties(input)
+      val json: JsonNode                = doNotAllowDuplicatedProperties(input)
+      val validationOutput: List[Error] = validateInternal(json.toString)
 
-      val validationOutput: ProcessingReport = schema.validate(json, true)
-
-      if (validationOutput.isSuccess) {
+      if (validationOutput.isEmpty) {
         SuccessfulValidation
       } else {
         val validationErrors = getValidationErrors(validationOutput)
@@ -74,26 +76,19 @@ class Validator(schema: JsonSchema) extends Logging {
         FailedValidation("Not JSON", 0, Nil)
     }
 
-  private def getValidationErrors(validationOutput: ProcessingReport): Seq[DesValidationError] =
-    validationOutput.asScala.toList.filter(m => m.getLogLevel == ERROR).map { m =>
-      val error     = m.asJson()
-      val message   = error.findValue(jsonErrorMessageTag).asText("")
-      val location  = error.findValue(jsonErrorInstanceTag).at(s"/$jsonErrorPointerTag").asText()
-      val locations = error.findValues(jsonErrorInstanceTag)
-      logger.error(s"[Validator][getValidationErrors] Failed at locations : $locations")
+  private def getValidationErrors(validationOutput: List[Error]): Seq[DesValidationError] =
+    validationOutput.map { error =>
+      val message  = error.getMessage
+      val location = error.getInstanceLocation.toString
+      logger.error(s"[Validator][getValidationErrors] Failed at locations : $location")
       DesValidationError(message, if (location == "") "/" else location)
     }
 
   private def doNotAllowDuplicatedProperties(jsonNodeAsString: String): JsonNode = {
     val objectMapper: ObjectMapper = new ObjectMapper()
     objectMapper.enable(JsonParser.Feature.STRICT_DUPLICATE_DETECTION)
+    objectMapper.readTree(jsonNodeAsString)
 
-    val jsonFactory: JsonFactory = objectMapper.getFactory
-    val jsonParser: JsonParser   = jsonFactory.createParser(jsonNodeAsString)
-
-    objectMapper.readTree(jsonParser)
-
-    JsonLoader.fromString(jsonNodeAsString)
   }
 
 }

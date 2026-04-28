@@ -17,7 +17,7 @@
 package controllers
 
 import play.api.test.FakeRequest
-import play.api.test.Helpers._
+import play.api.test.Helpers.*
 
 class Stub5mldControllerSpec extends SpecBase {
 

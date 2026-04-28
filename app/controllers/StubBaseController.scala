@@ -16,11 +16,11 @@
 
 package controllers
 
-import javax.inject.Inject
 import play.api.mvc.{AnyContent, ControllerComponents, Request, Result}
 import uk.gov.hmrc.play.bootstrap.backend.controller.BackendController
-import utils.JsonUtils._
+import utils.JsonUtils.*
 
+import javax.inject.Inject
 import scala.concurrent.Future
 
 class StubBaseController @Inject() ()(implicit cc: ControllerComponents)
