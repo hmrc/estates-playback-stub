@@ -25,6 +25,7 @@ import play.api.Logging
 import java.io.InputStream
 import scala.io.Source
 import scala.jdk.CollectionConverters.IterableHasAsScala
+import scala.util.Using
 
 class ValidationService() {
 
@@ -39,8 +40,8 @@ class ValidationService() {
   }
 
   private def resourceAsString(resourcePath: String): Option[String] =
-    resourceAsInputStream(resourcePath) map { is =>
-      Source.fromInputStream(is).getLines().mkString("\n")
+    resourceAsInputStream(resourcePath) flatMap { is =>
+      Using(Source.fromInputStream(is))(_.getLines().mkString("\n")).toOption
     }
 
   private def resourceAsInputStream(resourcePath: String): Option[InputStream] =
