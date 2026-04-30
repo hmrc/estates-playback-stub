@@ -17,10 +17,10 @@
 package controllers
 
 import controllers.actions.HeaderValidatorAction
-import javax.inject.{Inject, Singleton}
 import play.api.mvc.{Action, AnyContent, ControllerComponents}
-import utils.DesResponse._
+import utils.DesResponse.*
 
+import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
 
 @Singleton()

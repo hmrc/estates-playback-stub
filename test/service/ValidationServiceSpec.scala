@@ -125,6 +125,13 @@ class ValidationServiceSpec extends SpecBase {
       result.validationErrors.head.location mustBe "/responseHeader/dfmcaReturnUserStatus"
     }
 
+    "throws Exception when file is not present" in {
+      val exception = intercept[RuntimeException] {
+        new ValidationService().get("/missing-schema.json")
+      }
+      exception.getMessage mustBe "Missing schema: /missing-schema.json"
+    }
+
   }
 
   private def get5mldPath(utr: String): String =

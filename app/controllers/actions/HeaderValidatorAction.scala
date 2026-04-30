@@ -16,14 +16,14 @@
 
 package controllers.actions
 
-import javax.inject.Inject
-import play.api.Logging
-import play.api.mvc.{ActionBuilder, AnyContent, BodyParsers, Request, Result, Results}
 import controllers.HeaderValidator
-import utils.Session
+import play.api.Logging
+import play.api.mvc.*
 import uk.gov.hmrc.http.HeaderCarrier
 import uk.gov.hmrc.play.http.HeaderCarrierConverter
+import utils.Session
 
+import javax.inject.Inject
 import scala.concurrent.{ExecutionContext, Future}
 
 class HeaderValidatorAction @Inject() (
