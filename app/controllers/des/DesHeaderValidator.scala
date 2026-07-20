@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package controllers
+package controllers.des
 
 import play.api.mvc.Request
 
-trait HeaderValidator {
+trait DesHeaderValidator {
   val CORRELATION_ID_HEADER              = "CorrelationId"
   val ENVIRONMENT_HEADER                 = "Environment"
   val TOKEN_HEADER                       = "Authorization"

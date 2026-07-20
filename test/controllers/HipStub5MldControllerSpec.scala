@@ -16,14 +16,15 @@
 
 package controllers
 
+import controllers.hip.HipStub5MldController
 import play.api.test.FakeRequest
 import play.api.test.Helpers.*
 
-class Stub5mldControllerSpec extends SpecBase {
+class HipStub5MldControllerSpec extends SpecBase {
 
-  private val SUT = app.injector.instanceOf[Stub5mldController]
+  private val SUT = app.injector.instanceOf[HipStub5MldController]
 
-  private def createRequestForUtr(utr: String) = createGetRequestWithValidHeaders(s"/trusts/registration/UTR/$utr")
+  private def createRequestForUtr(utr: String) = createHipGetRequestWithValidHeaders(s"/trusts/registration/UTR/$utr")
 
   private def getEstateForUtr(utr: String) = {
     val request = createRequestForUtr(utr)
@@ -32,39 +33,12 @@ class Stub5mldControllerSpec extends SpecBase {
 
   "Stub5mldController getEstate" should {
 
-    "return FORBIDDEN with no headers" in {
+    "return BAD_REQUEST with no headers" in {
       val utr     = "2000000000"
       val request = FakeRequest("GET", s"/trusts/registration/$utr")
 
       val result = SUT.getEstate(utr).apply(request)
-      status(result) must be(FORBIDDEN)
-    }
-
-    "return FORBIDDEN with only a Token header" in {
-      val utr     = "2000000000"
-      val request = FakeRequest("GET", s"/trusts/registration/$utr")
-        .withHeaders((TOKEN_HEADER, "Bearer 11"))
-
-      val result = SUT.getEstate(utr).apply(request)
-      status(result) must be(FORBIDDEN)
-    }
-
-    "return UNAUTHORIZED with no Token header" in {
-      val utr     = "2000000000"
-      val request = FakeRequest("GET", s"/trusts/registration/$utr")
-        .withHeaders((ENVIRONMENT_HEADER, "dev"))
-
-      val result = SUT.getEstate(utr).apply(request)
-      status(result) must be(UNAUTHORIZED)
-    }
-
-    "return FORBIDDEN with no correlation ID" in {
-      val utr     = "2000000000"
-      val request = FakeRequest("GET", s"/trusts/registration/$utr")
-        .withHeaders((ENVIRONMENT_HEADER, "dev"), (TOKEN_HEADER, "Bearer 11"))
-
-      val result = SUT.getEstate(utr).apply(request)
-      status(result) must be(FORBIDDEN)
+      status(result) must be(BAD_REQUEST)
     }
 
     "return 200 with a valid response payload for a taxable estate with UTR 2000000000" in {
@@ -210,7 +184,7 @@ class Stub5mldControllerSpec extends SpecBase {
     "return 200 with no payload for in processing estates " in {
       val result = getEstateForUtr("1111111111")
       status(result)  must be(OK)
-      (contentAsJson(result) \ "responseHeader" \ "dfmcaReturnUserStatus")
+      (contentAsJson(result) \ "success" \ "responseHeader" \ "dfmcaReturnUserStatus")
         .as[String] mustBe "In Processing"
 
       (contentAsJson(result) \ "trustOrEstateDisplay").toOption mustNot be(defined)
@@ -219,7 +193,7 @@ class Stub5mldControllerSpec extends SpecBase {
     "return 200 with no payload for closed estates " in {
       val result = getEstateForUtr("1111111112")
       status(result)  must be(OK)
-      (contentAsJson(result) \ "responseHeader" \ "dfmcaReturnUserStatus")
+      (contentAsJson(result) \ "success" \ "responseHeader" \ "dfmcaReturnUserStatus")
         .as[String] mustBe "Closed"
 
       (contentAsJson(result) \ "trustOrEstateDisplay").toOption mustNot be(defined)
@@ -229,7 +203,7 @@ class Stub5mldControllerSpec extends SpecBase {
     "return 200 with no payload for estates pending closure " in {
       val result = getEstateForUtr("1111111113")
       status(result)  must be(OK)
-      (contentAsJson(result) \ "responseHeader" \ "dfmcaReturnUserStatus")
+      (contentAsJson(result) \ "success" \ "responseHeader" \ "dfmcaReturnUserStatus")
         .as[String] mustBe "Pending Closure"
 
       (contentAsJson(result) \ "trustOrEstateDisplay").toOption mustNot be(defined)
@@ -239,7 +213,7 @@ class Stub5mldControllerSpec extends SpecBase {
     "return 200 with no payload for parked estates " in {
       val result = getEstateForUtr("1111111114")
       status(result)  must be(OK)
-      (contentAsJson(result) \ "responseHeader" \ "dfmcaReturnUserStatus")
+      (contentAsJson(result) \ "success" \ "responseHeader" \ "dfmcaReturnUserStatus")
         .as[String] mustBe "Parked"
 
       (contentAsJson(result) \ "trustOrEstateDisplay").toOption mustNot be(defined)
@@ -249,7 +223,7 @@ class Stub5mldControllerSpec extends SpecBase {
     "return 200 with no payload for obsoleted estates " in {
       val result = getEstateForUtr("1111111115")
       status(result)  must be(OK)
-      (contentAsJson(result) \ "responseHeader" \ "dfmcaReturnUserStatus")
+      (contentAsJson(result) \ "success" \ "responseHeader" \ "dfmcaReturnUserStatus")
         .as[String] mustBe "Obsoleted"
 
       (contentAsJson(result) \ "trustOrEstateDisplay").toOption mustNot be(defined)
@@ -259,7 +233,7 @@ class Stub5mldControllerSpec extends SpecBase {
     "return 200 with no payload for suspended estates " in {
       val result = getEstateForUtr("1111111116")
       status(result)  must be(OK)
-      (contentAsJson(result) \ "responseHeader" \ "dfmcaReturnUserStatus")
+      (contentAsJson(result) \ "success" \ "responseHeader" \ "dfmcaReturnUserStatus")
         .as[String] mustBe "Suspended"
 
       (contentAsJson(result) \ "trustOrEstateDisplay").toOption mustNot be(defined)
@@ -269,32 +243,43 @@ class Stub5mldControllerSpec extends SpecBase {
     "return 400 utr code is not valid " in {
       val result = getEstateForUtr("12345678")
 
-      status(result)                                must be(BAD_REQUEST)
-      (contentAsJson(result) \ "code").as[String] mustBe "INVALID_UTR"
-      contentType(result).get                     mustBe "application/json"
+      status(result)                                          must be(BAD_REQUEST)
+      (contentAsJson(result) \ "error" \ "code").as[String] mustBe "400"
+      contentType(result).get                               mustBe "application/json"
     }
 
     "registration not available for provided utr " in {
       val result = getEstateForUtr("0000000404")
 
-      status(result)                                must be(NOT_FOUND)
-      (contentAsJson(result) \ "code").as[String] mustBe "RESOURCE_NOT_FOUND"
+      status(result)                                             must be(UNPROCESSABLE_ENTITY)
+      (contentAsJson(result) \ "error" \ "errorId").as[String] mustBe "000"
+    }
+
+    "return HIP technical error " in {
+      val result = getEstateForUtr("0000000999")
+
+      status(result)                                             must be(UNPROCESSABLE_ENTITY)
+      (contentAsJson(result) \ "error" \ "errorId").as[String] mustBe "999"
+    }
+
+    "return HIP request could not be processed " in {
+      val result = getEstateForUtr("0000000003")
+
+      status(result)                                             must be(UNPROCESSABLE_ENTITY)
+      (contentAsJson(result) \ "error" \ "errorId").as[String] mustBe "003"
     }
 
     "return 500 Internal server error when des having internal errors." in {
       val result = getEstateForUtr("0000000500")
 
-      status(result)                                must be(INTERNAL_SERVER_ERROR)
-      (contentAsJson(result) \ "code").as[String] mustBe "SERVER_ERROR"
-      (contentAsJson(result) \ "reason")
-        .as[String]                               mustBe "DES is currently experiencing problems that require live service intervention"
+      status(result)                                          must be(INTERNAL_SERVER_ERROR)
+      (contentAsJson(result) \ "error" \ "code").as[String] mustBe "500"
     }
 
     "return 503 service unavailable when dependent service is unavailable" in {
       val result = getEstateForUtr("0000000503")
-      status(result)                                  must be(SERVICE_UNAVAILABLE)
-      (contentAsJson(result) \ "code").as[String]   mustBe "SERVICE_UNAVAILABLE"
-      (contentAsJson(result) \ "reason").as[String] mustBe "Dependent systems are currently not responding"
+      status(result)                     must be(SERVICE_UNAVAILABLE)
+      contentAsJson(result).as[String] mustBe "SERVICE_UNAVAILABLE"
     }
   }
 

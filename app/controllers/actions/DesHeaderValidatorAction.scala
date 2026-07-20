@@ -16,7 +16,7 @@
 
 package controllers.actions
 
-import controllers.HeaderValidator
+import controllers.des.DesHeaderValidator
 import play.api.Logging
 import play.api.mvc.*
 import uk.gov.hmrc.http.HeaderCarrier
@@ -26,10 +26,10 @@ import utils.Session
 import javax.inject.Inject
 import scala.concurrent.{ExecutionContext, Future}
 
-class HeaderValidatorAction @Inject() (
+class DesHeaderValidatorAction @Inject() (
   override val parser: BodyParsers.Default,
   override val executionContext: ExecutionContext
-) extends ActionBuilder[Request, AnyContent] with HeaderValidator with Logging {
+) extends ActionBuilder[Request, AnyContent] with DesHeaderValidator with Logging {
 
   def invokeBlock[A](request: Request[A], block: Request[A] => Future[Result]): Future[Result] = {
 

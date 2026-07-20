@@ -1,4 +1,8 @@
 # microservice specific routes
 
 # 5MLD
-GET        /trusts/registration/UTR/:utr controllers.Stub5mldController.getEstate(utr: String)
+GET        /trusts/registration/UTR/:utr controllers.des.DesStub5MldController.getEstate(utr: String)
+
+#Hip migration
+
+GET        /RESTAdapter/trustsandestates/registration/UTR/:utr controllers.hip.HipStub5MldController.getEstate(utr: String)
