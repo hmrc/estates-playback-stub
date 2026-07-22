@@ -5,4 +5,4 @@ GET        /trusts/registration/UTR/:utr controllers.des.DesStub5MldController.g
 
 #Hip migration
 
-GET        /RESTAdapter/trustsandestates/registration/UTR/:utr controllers.hip.HipStub5MldController.getEstate(utr: String)
+GET        /etmp/RESTAdapter/trustsandestates/registration/UTR/:utr controllers.hip.HipStub5MldController.getEstate(utr: String)

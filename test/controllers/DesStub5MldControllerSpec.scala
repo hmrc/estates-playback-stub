@@ -17,6 +17,7 @@
 package controllers
 
 import controllers.des.DesStub5MldController
+import play.api.libs.json
 import play.api.test.FakeRequest
 import play.api.test.Helpers.*
 
