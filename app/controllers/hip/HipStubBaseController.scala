@@ -27,13 +27,13 @@ import javax.inject.Inject
 import scala.concurrent.Future
 
 class HipStubBaseController @Inject() ()(implicit cc: ControllerComponents)
-    extends BackendController(cc) with DesHeaderValidator with StubBaseController {
+    extends BackendController(cc) with StubBaseController {
 
   def jsonResult(utr: String)(implicit request: Request[AnyContent]): Future[Result] = {
     val path = s"/resources/$utr.json"
     Future.successful(
       Ok(Json.obj("success" -> jsonFromFile(path))).withHeaders(
-        request.headers.get(CORRELATION_ID_HEADER).map((CORRELATION_ID_HEADER, _)).toSeq*
+        request.headers.get("correlationid").map(("correlationid", _)).toSeq*
       )
     )
   }

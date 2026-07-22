@@ -21,7 +21,7 @@ import play.api.mvc.{AnyContent, Request, Result}
 
 import scala.concurrent.Future
 
-trait StubBaseController extends DesHeaderValidator {
+trait StubBaseController {
 
   val utrRegex = "^[0-9]{10}$".r
 
