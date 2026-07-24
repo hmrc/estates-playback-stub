@@ -16,14 +16,13 @@
 
 package controllers
 
-import controllers.des.DesHeaderValidator
 import play.api.mvc.{AnyContent, Request, Result}
 
 import scala.concurrent.Future
 
 trait StubBaseController {
 
-  val utrRegex = "^[0-9]{10}$".r
+  private val utrRegex = "^[0-9]{10}$".r
 
   def json5mldResult(id: String)(implicit request: Request[AnyContent]): Future[Result] =
     jsonResult(s"5mld/$id")

@@ -17,7 +17,6 @@
 package controllers.des
 
 import controllers.StubBaseController
-import play.api.libs.json.Json
 import play.api.mvc.{AnyContent, ControllerComponents, Request, Result}
 import uk.gov.hmrc.play.bootstrap.backend.controller.BackendController
 import utils.JsonUtils.*

@@ -21,7 +21,8 @@ import play.api.mvc.*
 
 import scala.concurrent.{ExecutionContext, Future}
 
-trait HipHeaderValidator {
+class HipHeaderValidatorAction @Inject() (parser: BodyParsers.Default)(using val ec: ExecutionContext)
+    extends ActionBuilderImpl(parser) {
 
   def validHeaders(request: Request[?]): Boolean = {
     val headers = request.headers
@@ -32,11 +33,6 @@ trait HipHeaderValidator {
     headers.hasHeader("X-Transmitting-System") &&
     headers.hasHeader("Authorization")
   }
-
-}
-
-class HipHeaderValidatorAction @Inject() (parser: BodyParsers.Default)(using val ec: ExecutionContext)
-    extends ActionBuilderImpl(parser) with HipHeaderValidator {
 
   override def invokeBlock[A](request: Request[A], block: Request[A] => Future[Result]): Future[Result] =
     if (validHeaders(request)) {

@@ -268,7 +268,7 @@ class DesStub5MldControllerSpec extends SpecBase {
 
     }
 
-    "return 400 utr code is not valid " in {
+    "return a 400 given an invalid UTR" in {
       val result = getEstateForUtr("12345678")
 
       status(result)                                must be(BAD_REQUEST)

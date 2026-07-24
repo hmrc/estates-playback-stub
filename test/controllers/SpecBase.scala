@@ -18,7 +18,7 @@ package controllers
 
 import org.scalatestplus.play.PlaySpec
 import org.scalatestplus.play.guice.GuiceOneServerPerSuite
-import play.api.mvc.{AnyContentAsEmpty, AnyContentAsJson}
+import play.api.mvc.AnyContentAsEmpty
 import play.api.test.FakeRequest
 
 abstract class SpecBase extends PlaySpec with GuiceOneServerPerSuite {

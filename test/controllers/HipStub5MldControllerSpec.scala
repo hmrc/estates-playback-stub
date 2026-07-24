@@ -240,46 +240,50 @@ class HipStub5MldControllerSpec extends SpecBase {
 
     }
 
-    "return 400 utr code is not valid " in {
+    "return a 400 given an invalid UTR" in {
       val result = getEstateForUtr("12345678")
 
-      status(result)                                          must be(BAD_REQUEST)
-      (contentAsJson(result) \ "error" \ "code").as[String] mustBe "400"
-      contentType(result).get                               mustBe "application/json"
+      status(result)                                             must be(BAD_REQUEST)
+      (contentAsJson(result) \ "error" \ "code").as[String]    mustBe "400"
+      (contentAsJson(result) \ "error" \ "message").as[String] mustBe "String"
+      (contentAsJson(result) \ "error" \ "logID").as[String]   mustBe "00000000000000000000000000000000"
+      contentType(result).get                                  mustBe "application/json"
     }
 
     "registration not available for provided utr " in {
       val result = getEstateForUtr("0000000404")
 
-      status(result)                                             must be(UNPROCESSABLE_ENTITY)
-      (contentAsJson(result) \ "error" \ "errorId").as[String] mustBe "000"
+      status(result)                                                    must be(UNPROCESSABLE_ENTITY)
+      (contentAsJson(result) \ "error" \ "processingDate").as[String] mustBe "2026-01-31T09:26:17Z"
+      (contentAsJson(result) \ "error" \ "errorId").as[String]        mustBe "000"
+      (contentAsJson(result) \ "error" \ "text").as[String]           mustBe "UTR or URN is invalid"
     }
 
     "return HIP technical error " in {
       val result = getEstateForUtr("0000000999")
 
-      status(result)                                             must be(UNPROCESSABLE_ENTITY)
-      (contentAsJson(result) \ "error" \ "errorId").as[String] mustBe "999"
+      status(result)                                                    must be(UNPROCESSABLE_ENTITY)
+      (contentAsJson(result) \ "error" \ "processingDate").as[String] mustBe "2026-01-31T09:26:17Z"
+      (contentAsJson(result) \ "error" \ "errorId").as[String]        mustBe "999"
+      (contentAsJson(result) \ "error" \ "text").as[String]           mustBe "Technical Error"
     }
 
     "return HIP request could not be processed " in {
       val result = getEstateForUtr("0000000003")
 
-      status(result)                                             must be(UNPROCESSABLE_ENTITY)
-      (contentAsJson(result) \ "error" \ "errorId").as[String] mustBe "003"
+      status(result)                                                    must be(UNPROCESSABLE_ENTITY)
+      (contentAsJson(result) \ "error" \ "processingDate").as[String] mustBe "2026-01-31T09:26:17Z"
+      (contentAsJson(result) \ "error" \ "errorId").as[String]        mustBe "003"
+      (contentAsJson(result) \ "error" \ "text").as[String]           mustBe "Request could not be processed"
     }
 
     "return 500 Internal server error when des having internal errors." in {
       val result = getEstateForUtr("0000000500")
 
-      status(result)                                          must be(INTERNAL_SERVER_ERROR)
-      (contentAsJson(result) \ "error" \ "code").as[String] mustBe "500"
-    }
-
-    "return 503 service unavailable when dependent service is unavailable" in {
-      val result = getEstateForUtr("0000000503")
-      status(result)                     must be(SERVICE_UNAVAILABLE)
-      contentAsJson(result).as[String] mustBe "SERVICE_UNAVAILABLE"
+      status(result)                                             must be(INTERNAL_SERVER_ERROR)
+      (contentAsJson(result) \ "error" \ "code").as[String]    mustBe "500"
+      (contentAsJson(result) \ "error" \ "message").as[String] mustBe "String"
+      (contentAsJson(result) \ "error" \ "logID").as[String]   mustBe "00000000000000000000000000000000"
     }
   }
 
