@@ -17,6 +17,7 @@
 package controllers.hip
 
 import controllers.Stub5mldController
+import play.api.libs.json.JsString
 import play.api.mvc.{Action, AnyContent, ControllerComponents}
 import utils.HipResponse.*
 
@@ -31,16 +32,39 @@ class HipStub5MldController @Inject() (headerValidatorAction: HipHeaderValidator
   def getEstate(id: String): Action[AnyContent] = headerValidatorAction.async { implicit request =>
     if (is5mldIdValid(id)) {
       id match {
-        case "0000000500" =>
+        case "2000000000" | "2000000001" | "2000000002" | "2000000003" | "2000000004" =>
+          json5mldResult(id)
+        case "4000000000" | "4000000001" | "4000000002" | "4000000003" | "4000000004" | "4000000005" | "4000000006" |
+             "4000000007" | "4000000008" | "4000000009" | "4000000010" =>
+          json5mldResult(id)
+        // 5mld taxable estates
+        case "2500000000" | "2500000001" | "2500000002" | "2500000003" | "2500000004" | "2500000007" | "2500000101" |
+             "2500000102" | "2500000011" =>
+          json5mldResult(id)
+        // 5mld estate failed claim feature
+        case "2500000005"                                                             =>
+          json5mldResult(id)
+        // 4MLD taxable estate registered, first time played back under 5MLD. User needs to answer additional questions
+        case "2500000010"                                                             =>
+          json5mldResult(id)
+        // In Processing, Closed and Pending Closure
+        case "1111111111" | "1111111112" | "1111111113"                               =>
+          jsonResult(id)
+        // Parked, Obsoleted and Suspended
+        case "1111111114" | "1111111115" | "1111111116"                               =>
+          jsonResult(id)
+        case "5000000000"                                                             => json5mldResult(id) // Suspended
+        case "5000000001"                                                             => json5mldResult(id) // Fail tax enrolments
+        case "0000000500"                                                             =>
           Future.successful(InternalServerError(jsonResponse500))
-        case "0000000999" =>
+        case "0000000503"                                                             =>
+          Future.successful(ServiceUnavailable(JsString("SERVICE_UNAVAILABLE")))
+        case "0000000999"                                                             =>
           Future.successful(UnprocessableEntity(jsonResponseTechnicalError))
-        case "0000000003" =>
+        case "0000000003"                                                             =>
           Future.successful(UnprocessableEntity(jsonResponseNotProcessed))
-        case "0000000404" =>
+        case _                                                                        =>
           Future.successful(UnprocessableEntity(jsonResponseResourceNotFound))
-        case _            =>
-          successResponses(id)
       }
     } else {
       Future.successful(BadRequest(jsonResponse400))

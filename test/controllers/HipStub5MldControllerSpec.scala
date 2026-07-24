@@ -285,6 +285,12 @@ class HipStub5MldControllerSpec extends SpecBase {
       (contentAsJson(result) \ "error" \ "message").as[String] mustBe "String"
       (contentAsJson(result) \ "error" \ "logID").as[String]   mustBe "00000000000000000000000000000000"
     }
+
+    "return 503 service unavailable when dependent service is unavailable" in {
+      val result = getEstateForUtr("0000000503")
+      status(result)                     must be(SERVICE_UNAVAILABLE)
+      contentAsJson(result).as[String] mustBe "SERVICE_UNAVAILABLE"
+    }
   }
 
 }
