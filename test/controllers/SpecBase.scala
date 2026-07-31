@@ -27,14 +27,30 @@ abstract class SpecBase extends PlaySpec with GuiceOneServerPerSuite {
   val TOKEN_HEADER         = "Authorization"
   val CORRELATIONID_HEADER = "CorrelationId"
 
+  val HIP_CORRELATIONID_HEADER = "correlationid"
+  val X_ORIGINATING_SYSTEM     = "X-Originating-System"
+  val X_RECEIPT_DATE           = "X-Receipt-Date"
+  val X_TRANSMITTING_SYSTEM    = "X-Transmitting-System"
+
   val CONTENT_TYPE_HEADER: (String, String) = ("Content-type", "application/json")
 
-  def createGetRequestWithValidHeaders(url: String): FakeRequest[AnyContentAsEmpty.type] =
+  def createDesGetRequestWithValidHeaders(url: String): FakeRequest[AnyContentAsEmpty.type] =
     FakeRequest("GET", url)
       .withHeaders(
         (ENVIRONMENT_HEADER, "dev"),
         (TOKEN_HEADER, "Bearer 11"),
         (CORRELATIONID_HEADER, "cd7a4033-ae84-4e18-861d-9d62c6741e87")
+      )
+
+  def createHipGetRequestWithValidHeaders(url: String): FakeRequest[AnyContentAsEmpty.type] =
+    FakeRequest("GET", url)
+      .withHeaders(CONTENT_TYPE_HEADER)
+      .withHeaders(
+        (HIP_CORRELATIONID_HEADER, "f0bd1f32-de51-45cc-9b18-0520d6e3ab1a"),
+        (X_ORIGINATING_SYSTEM, "TRS"),
+        (X_RECEIPT_DATE, "2025-01-30T23:59:59Z"),
+        (X_TRANSMITTING_SYSTEM, "HIP"),
+        (TOKEN_HEADER, "api-client-id:api-client-secret")
       )
 
 }

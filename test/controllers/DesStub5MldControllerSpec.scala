@@ -16,14 +16,16 @@
 
 package controllers
 
+import controllers.des.DesStub5MldController
+import play.api.libs.json
 import play.api.test.FakeRequest
 import play.api.test.Helpers.*
 
-class Stub5mldControllerSpec extends SpecBase {
+class DesStub5MldControllerSpec extends SpecBase {
 
-  private val SUT = app.injector.instanceOf[Stub5mldController]
+  private val SUT = app.injector.instanceOf[DesStub5MldController]
 
-  private def createRequestForUtr(utr: String) = createGetRequestWithValidHeaders(s"/trusts/registration/UTR/$utr")
+  private def createRequestForUtr(utr: String) = createDesGetRequestWithValidHeaders(s"/trusts/registration/UTR/$utr")
 
   private def getEstateForUtr(utr: String) = {
     val request = createRequestForUtr(utr)
@@ -266,7 +268,7 @@ class Stub5mldControllerSpec extends SpecBase {
 
     }
 
-    "return 400 utr code is not valid " in {
+    "return a 400 given an invalid UTR" in {
       val result = getEstateForUtr("12345678")
 
       status(result)                                must be(BAD_REQUEST)
