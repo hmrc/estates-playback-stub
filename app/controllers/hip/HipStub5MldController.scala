@@ -17,7 +17,6 @@
 package controllers.hip
 
 import controllers.Stub5mldController
-import play.api.libs.json.JsString
 import play.api.mvc.{Action, AnyContent, ControllerComponents}
 import utils.HipResponse.*
 
@@ -58,7 +57,7 @@ class HipStub5MldController @Inject() (headerValidatorAction: HipHeaderValidator
         case "0000000500"                                                             =>
           Future.successful(InternalServerError(jsonResponse500))
         case "0000000503"                                                             =>
-          Future.successful(ServiceUnavailable(JsString("SERVICE_UNAVAILABLE")))
+          Future.successful(ServiceUnavailable(jsonResponse503))
         case "0000000999"                                                             =>
           Future.successful(UnprocessableEntity(jsonResponseTechnicalError))
         case "0000000003"                                                             =>

@@ -243,11 +243,11 @@ class HipStub5MldControllerSpec extends SpecBase {
     "return a 400 given an invalid UTR" in {
       val result = getEstateForUtr("12345678")
 
-      status(result)                                             must be(BAD_REQUEST)
-      (contentAsJson(result) \ "error" \ "code").as[String]    mustBe "400"
-      (contentAsJson(result) \ "error" \ "message").as[String] mustBe "String"
-      (contentAsJson(result) \ "error" \ "logID").as[String]   mustBe "00000000000000000000000000000000"
-      contentType(result).get                                  mustBe "application/json"
+      status(result)                                                                must be(BAD_REQUEST)
+      (contentAsJson(result) \ "origin").as[String]                               mustBe "HIP"
+      (contentAsJson(result) \ "response" \ "failures" \ 0 \ "type").as[String]   mustBe "Type of Failure"
+      (contentAsJson(result) \ "response" \ "failures" \ 0 \ "reason").as[String] mustBe "Reason for Failure"
+      contentType(result).get                                                     mustBe "application/json"
     }
 
     "registration not available for provided utr " in {
@@ -280,16 +280,19 @@ class HipStub5MldControllerSpec extends SpecBase {
     "return 500 Internal server error when des having internal errors." in {
       val result = getEstateForUtr("0000000500")
 
-      status(result)                                             must be(INTERNAL_SERVER_ERROR)
-      (contentAsJson(result) \ "error" \ "code").as[String]    mustBe "500"
-      (contentAsJson(result) \ "error" \ "message").as[String] mustBe "String"
-      (contentAsJson(result) \ "error" \ "logID").as[String]   mustBe "00000000000000000000000000000000"
+      status(result)                                                          must be(INTERNAL_SERVER_ERROR)
+      (contentAsJson(result) \ "response" \ "error" \ "code").as[String]    mustBe "500"
+      (contentAsJson(result) \ "response" \ "error" \ "message").as[String] mustBe "String"
+      (contentAsJson(result) \ "response" \ "error" \ "logID").as[String]   mustBe "00000000000000000000000000000000"
     }
 
     "return 503 service unavailable when dependent service is unavailable" in {
       val result = getEstateForUtr("0000000503")
-      status(result)                     must be(SERVICE_UNAVAILABLE)
-      contentAsJson(result).as[String] mustBe "SERVICE_UNAVAILABLE"
+      status(result)                                                                must be(SERVICE_UNAVAILABLE)
+      (contentAsJson(result) \ "origin").as[String]                               mustBe "HIP"
+      (contentAsJson(result) \ "response" \ "failures" \ 0 \ "type").as[String]   mustBe "string"
+      (contentAsJson(result) \ "response" \ "failures" \ 0 \ "reason").as[String] mustBe "string"
+      contentType(result).get                                                     mustBe "application/json"
     }
   }
 
