@@ -7,3 +7,4 @@ test-repositories:
   - estates-acceptance-tests
   - estates-iv-perf-tests
   - estates-iv-ui-tests
+serviceNowMapping: SNSVC0005913
