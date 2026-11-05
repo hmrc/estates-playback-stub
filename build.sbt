@@ -1,4 +1,4 @@
-ThisBuild / scalaVersion := "3.3.7"
+ThisBuild / scalaVersion := "3.3.9"
 ThisBuild / majorVersion := 1
 
 lazy val microservice = Project("estates-playback-stub", file("."))
